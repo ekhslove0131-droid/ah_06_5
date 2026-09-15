@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Competition raw data
+train.csv
+test.csv
+sample_submission.csv
+
+# Generated submissions
+aeyoung_*.csv
+BEST_*_test_seed_predictions.csv
+
+# Large / generated experiment outputs
+*_oof_probabilities.csv
+*_predictions.csv
+*_seed_results.csv
+*_fold_results.csv
+*_classwise_results.csv
+
+# Temporary / backup runner files
+_exp_*.py
+*_prepatch.py

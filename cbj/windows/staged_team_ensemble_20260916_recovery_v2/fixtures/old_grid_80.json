@@ -1,0 +1,318 @@
+{
+  "version": "cbj-new-direction-grid-design-v1",
+  "created": "2026-09-14",
+  "status": "DESIGN_ONLY_NOT_LAUNCHED",
+  "artifact_type": "declarative proposal, not an executable training runner",
+  "training_authorized": false,
+  "automatic_goal_resume": false,
+  "automatic_submission": false,
+  "user_submission_mode": "user will submit the two existing CSV files manually",
+  "input": {
+    "path_base": "cbj_windows_lab (not the design subdirectory)",
+    "train_csv": "../open (1)/train.csv",
+    "expected_train_sha256": "92418b8441d058cfc68e939dd88725610750be4bc8edc51253cffc72fc4fc0ab",
+    "rows": 6201,
+    "classes": 26,
+    "canonical_groups": 5636,
+    "patient_ID_as_feature": false,
+    "test_access_for_search": false,
+    "server_feedback_for_search": false,
+    "existing_test_prediction_diagnostics_used": false
+  },
+  "common": {
+    "B0": [
+      "gene",
+      "type",
+      "aa",
+      "aa_from",
+      "aa_to"
+    ],
+    "B1": [
+      "gene_change",
+      "site",
+      "exact"
+    ],
+    "reference_transform": "Frozen parser semantics; fresh fold-train MCMP support3 encoder for numeric29/guard only; raw12 stateless; fit all vocabularies/selectors/transforms within the relevant training partition",
+    "numeric41": "same global29+raw12 definitions; log1p then training-only StandardScaler; fixed 1/sqrt(41) block weight, including NN/FM numeric branch",
+    "sample_weights": "(N_train/n_class)^0.5; normalize sample mean to1; computed from relevant training labels only; unweighted evaluation",
+    "linear_model": "lbfgs; L2; max_iter=3000; tol=1e-5; C from family grid; fail on ConvergenceWarning; no outer-valid early stopping",
+    "folds_and_classes": "retain all rows, original target/class order/canonical groups; no relabeling or deletion of conflicting groups",
+    "seeds": "model42 fixed, not searched; no repeated seed picking",
+    "posthoc_class_bias_search": false
+  },
+  "fusion": {
+    "standalone": "new model probability only",
+    "half_h1_guarded_mean": "0.5*new_model_probability + 0.5*H1_probability; if reference MCMP symbolic vector is numeric-zero and the relevant H1 training partition contains no numeric-zero symbolic row, replace with exact H1 probability",
+    "H1": "fixed existing recipe: fold-train mRMR + global29 + raw12, XGBoost200/depth3/lr0.1/model seed42/weight alpha0.5; refit within each applicable new split",
+    "searched_weights": false,
+    "learned_meta_model": false,
+    "cached_predictions": "may share exactly matching training IDs/groups/labels/source/config across candidates; never reuse an old model that saw a current validation group"
+  },
+  "validation": {
+    "mode": "proposal: sealed outer5 x inner3 grouped nested search",
+    "outer_split_seed": 20260914,
+    "inner_split_seed_formula": "2026091400 + outer_index",
+    "split_admission": "fixed splitter implementation/version and input hashes; all26 classes in every train/valid partition; group crossing0; fail rather than searching split seeds for a favorable score",
+    "selection": "within each outer-training partition evaluate every candidate on pooled inner OOF; choose highest unweighted26-class macro-F1; exact ties within1e-12 prefer standalone then base_trial_id lexicographically",
+    "outer_refit": "fit the selected new base on all outer-training rows; apply selected fusion using H1 trained on same outer-training rows",
+    "report": "one full6201-row outer OOF for the entire search procedure, not a claimed score for one globally fixed winning architecture; no partial outer scores released during search",
+    "baseline": "refit frozen best algorithm on identical new outer partitions: H1 + C10, C10 bias learned on inner C10 OOF, then geometric supportguard",
+    "baseline_subfit_reuse": "15 inner C10 fits and5 outer C10 fits,5 outer H1 fits; inner H1 anchor15 fits are distinct",
+    "old_data_warning": "Changing split seed does not make an already analyzed cohort independent; result remains development evidence affected by prior design choices",
+    "final_deployment": "after separate approval, select final configuration using the frozen inner-search procedure on all training data; current submission files stay untouched",
+    "proposed_promotion_gate": {
+      "primary": "new outer pooled macro-F1 >= same-new-split best-algorithm baseline +0.005",
+      "fold_nonnegative_count_min": 4,
+      "worst_fold_delta_min": -0.01,
+      "rare_classes": [
+        "ACC",
+        "DLBC",
+        "THYM"
+      ],
+      "rare_mean_delta_min": -0.02,
+      "rare_single_delta_min": -0.1,
+      "integrity": "all identity/hash/group/fold checks pass; all fits converged or completed fixed budgets; no malformed output; effective device/settings verified",
+      "status_if_pass": "candidate for frozen replay/robustness review, NOT automatic independent-validation claim or automatic submission",
+      "note": "Thresholds are proposed practical rules, not statistical guarantees; freeze before any run. Logloss/rescue/damage/uncertainty are reported separately."
+    }
+  },
+  "budget": {
+    "measured_runtime_hours": null,
+    "wall_time_or_fit_launch_approved": false,
+    "base_configurations": 80,
+    "fusion_choices": 2,
+    "evaluated_candidate_configurations": 160,
+    "counts_by_family": {
+      "G1": 12,
+      "G2": 18,
+      "G3": 18,
+      "G4": 12,
+      "G5": 12,
+      "G6": 8
+    },
+    "inner_new_pipeline_fits": 1200,
+    "inner_h1_anchor_fits": 15,
+    "outer_selected_new_pipeline_fits": 5,
+    "best_baseline_h1_outer_fits": 5,
+    "best_baseline_c10_outer_fits": 5,
+    "best_baseline_c10_inner_fits": 15,
+    "total_pipeline_fit_calls_if_all_complete": 1245,
+    "inner_binary_ovr_classifier_fits": 7020,
+    "total_underlying_classifier_fit_range": [
+      7995,
+      8120
+    ],
+    "distinct_mrmr_selectors_before_any_replay": 20,
+    "shared_svd_nmf_inner_transform_fits": 90,
+    "excludes": "preprocessing work from classifier-fit count; failed attempts, later reproducibility runs, runtime pilot costs, optional extensions",
+    "proposed_limits": {
+      "cpu_threads": 4,
+      "mrmr_jobs": 2,
+      "simultaneous_gpu_jobs": 1,
+      "gpu_peak_gib": 6,
+      "host_peak_gib": 12
+    },
+    "resource_gate": "estimate actual matrix/optimizer/batch memory before each fit; no implicit CPU fallback; changing limits/grid after reading scores invalidates pre-registration"
+  },
+  "families": [
+    {
+      "id": "G1",
+      "name_ko": "변이 위치 이웃 표현",
+      "novelty": "원자료의 유효 단백질 위치를 유전자·변이종류별 구간으로 묶음",
+      "grid": {
+        "position_bin_width": [
+          8,
+          32,
+          128
+        ],
+        "min_group_support": [
+          2,
+          3
+        ],
+        "C": [
+          1,
+          10
+        ]
+      },
+      "fixed": {
+        "representation": "B0 + binary gene/kind/start-position-bin",
+        "position_source": "frozen mcmp_repr.safe_site only; use valid start coordinate; unresolved remains unknown",
+        "bin_formula": "floor((position - 1)/width)",
+        "learner": "multinomial logistic L2 lbfgs",
+        "symbolic_transform": "single train-fitted sublinear TFIDF L2"
+      },
+      "risk": "구간 경계가 임의적이며 가까운 위치가 같은 기능이라는 보장은 없음"
+    },
+    {
+      "id": "G2",
+      "name_ko": "일반·희귀 특성 분리 TF-IDF",
+      "novelty": "희귀 세부 특성이 전체 벡터 정규화에서 일반 특성을 약화시키는 문제를 별도 블록으로 다룸",
+      "grid": {
+        "fine_min_group_support": [
+          2,
+          3
+        ],
+        "fine_block_weight": [
+          0.25,
+          0.5,
+          1
+        ],
+        "C": [
+          0.3,
+          3,
+          10
+        ]
+      },
+      "fixed": {
+        "representation": "B0 and B1 as separate blocks",
+        "symbolic_transform": "independent train-fitted sublinear TFIDF L2 per block; concatenate B0 and w*B1 without a second joint L2 normalization",
+        "learner": "multinomial logistic L2 lbfgs"
+      },
+      "risk": "희귀 특성 추가는 신호 확보와 잡음 증가를 함께 일으킬 수 있음; support1은 본 그리드에서 제외"
+    },
+    {
+      "id": "G3",
+      "name_ko": "암종별 OVR + NB 로그비 특성",
+      "novelty": "공통 softmax 대신 26개 암종 대 나머지 판별 및 암종별 특성 강조",
+      "grid": {
+        "view": [
+          "B0",
+          "B0_B1_support3"
+        ],
+        "reweight": [
+          "none",
+          "nb_alpha1",
+          "nb_alpha10"
+        ],
+        "C": [
+          0.3,
+          3,
+          10
+        ]
+      },
+      "fixed": {
+        "learner": "26 binary logistic L2 lbfgs classifiers",
+        "nb_formula": "r_cj=log((a+sum_pos binaryX_j)/sum_j(a+sum_pos binaryX_j))-log((a+sum_neg binaryX_j)/sum_j(a+sum_neg binaryX_j))",
+        "nb_scope": "training labels only within each fit; plain OVR control uses r=1",
+        "features": "train-fitted TFIDF multiplied by class-specific r; numeric41 appended without NB reweighting",
+        "output": "normalize 26 independent predict_proba positive-class scores; not claimed calibrated"
+      },
+      "risk": "작은 클래스의 통계 과적합; 1개 pipeline당 binary model 26개"
+    },
+    {
+      "id": "G4",
+      "name_ko": "공동발생 잠재 패턴",
+      "novelty": "희소 변이 특성을 fold-train에서 학습한 저차원 공동발생 요인으로 표현",
+      "grid": {
+        "decomposition": [
+          "TruncatedSVD",
+          "NMF"
+        ],
+        "components": [
+          32,
+          64,
+          128
+        ],
+        "C": [
+          0.3,
+          3
+        ]
+      },
+      "fixed": {
+        "input": "train-fitted B0 TFIDF; nonnegative input for NMF",
+        "svd": "randomized; n_iter=7; random_state=42",
+        "nmf": "init=nndsvda; solver=cd; beta_loss=frobenius; max_iter=1000; tol=1e-4; random_state=42; no silent convergence failure",
+        "latent_scaling": "train-only StandardScaler then fixed block weight 1/sqrt(rank)",
+        "learner": "multinomial logistic L2 lbfgs"
+      },
+      "risk": "희귀 driver 정보 손실 가능; 잠재 요인은 생물학적 경로나 활성의 증거가 아님"
+    },
+    {
+      "id": "G5",
+      "name_ko": "저차원 변이 특성 상호작용 FM",
+      "novelty": "희소 특성의 쌍별 상호작용을 저차원 인자로 공유해 학습",
+      "grid": {
+        "view": [
+          "gene_binary",
+          "gene_type_binary"
+        ],
+        "interaction_rank": [
+          8,
+          16,
+          32
+        ],
+        "weight_decay": [
+          0.001,
+          0.01
+        ]
+      },
+      "fixed": {
+        "symbolic_transform": "row L2-normalized binary features; missing flags preserved",
+        "learner": "proposed 26-logit second-order FM with class-specific factors + numeric41 linear branch",
+        "optimizer": "AdamW; learning_rate=0.001; epochs=80; batch_rows=128; random_seed=42",
+        "implementation": "new multiclass adaptation; not a claim that libFM offers this exact ready-made interface"
+      },
+      "risk": "높은 변이 수에 따른 상호작용 수 증가; 통계적 상호작용을 생물학적 인과로 해석하지 않음"
+    },
+    {
+      "id": "G6",
+      "name_ko": "변이 토큰 집합 DeepSets",
+      "novelty": "미리 만든 희소 집계 대신 개별 annotation token의 순서 없는 집합을 학습",
+      "grid": {
+        "token_embedding_dim": [
+          32,
+          64
+        ],
+        "pool": [
+          "mean_max",
+          "mean_sqrt_normalized_sum"
+        ],
+        "dropout": [
+          0.3,
+          0.5
+        ]
+      },
+      "fixed": {
+        "token_fields": [
+          "gene categorical",
+          "kind categorical",
+          "amino-acid from/to categorical",
+          "log1p(valid start position) plus unknown-position flag"
+        ],
+        "gene_vocabulary": "fit on training token genes with canonical-group support>=2; remaining genes use UNK without dropping tokens",
+        "position_scaling": "training-fold statistics only; no protein length or DNA context invented",
+        "architecture": "two-layer token MLP; pooled embedding + numeric41; 26-way softmax",
+        "optimizer": "AdamW; learning_rate=0.001; weight_decay=0.01; epochs=60; batch_rows=32; random_seed=42",
+        "sqrt_sum": "sum token embeddings / sqrt(max(1,token_count)); empty set gets zero pooled vectors",
+        "token_preservation": "chunked aggregation, not token truncation; preserve repeated annotations; no O(N^2) attention"
+      },
+      "risk": "6201행에서 신경망 과적합 가능성이 크며 새로운 GPU 구현/재현 검사가 필요"
+    }
+  ],
+  "excluded_from_core": [
+    "tree200-to800 repetition",
+    "unchanged full-space RBF gamma sweep",
+    "same numeric/native CatBoost recipe repetition",
+    "more posthoc class bias / unrestricted classwise stacking",
+    "pair specialist prioritized using conflicting-label groups",
+    "support1 fine features without a separate memory/dilution plan",
+    "narrow methylation pathway repeat",
+    "invented DNA trinucleotide signatures, CNV, protein sequence or functional labels absent from inputs"
+  ],
+  "later_separate_protocols": [
+    "Broad curated pathway view only after rule/license/gene mapping/version/coverage review; no matched external patient labels",
+    "protein relative-coordinate or pretrained sequence model only if valid reference mapping and input provenance exist",
+    "seed robustness and genuine untouched external cohort confirmation; never choose the better seed result"
+  ],
+  "references": {
+    "previous_experiments": "GOAL055_STRATEGY.md and named parent audit JSON files",
+    "rare_coverage": "GOAL055_RARE_FEATURE_FEASIBILITY.json",
+    "nb_ratio": "https://aclanthology.org/P12-2018/",
+    "latent_svd": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html",
+    "latent_nmf": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.NMF.html",
+    "factorization_machines": "https://www.libfm.org/",
+    "deep_sets": "https://arxiv.org/abs/1703.06114",
+    "nested_validation": "https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html",
+    "evidence_limit": "Methods motivate hypotheses; none establish a Macro-F1 gain on this dataset"
+  }
+}

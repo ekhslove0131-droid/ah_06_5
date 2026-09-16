@@ -1,0 +1,62 @@
+{
+  "version": "cbj-best05204-frozen-inference-v1",
+  "description": "Saved-model replay and inference only; no fit, selection, calibration, tuning, server feedback, or upload.",
+  "folds": [0, 1, 2, 3, 4],
+  "class_count": 26,
+  "train_rows": 6201,
+  "test_rows": 2546,
+  "source_gene_count": 4384,
+  "numeric_features": 41,
+  "predict_batch_rows": 128,
+  "pipeline": [
+    "c10_log_bias",
+    "equal_geometric_h1_c10",
+    "input_only_support_guard_h1",
+    "equal_fold_mean"
+  ],
+  "new_fit_count": 0,
+  "selection": false,
+  "server_feedback_used": false,
+  "expected_oof_macro_f1": 0.5204059148667912,
+  "expected_oof_rows": 6201,
+  "expected_oof_classes": 26,
+  "expected_outer_guarded_rows": 94,
+  "replay_tolerances": {
+    "windows_cuda:0": 1e-12,
+    "cross_gpu_cuda:0": 1e-6,
+    "cpu": 1e-6
+  },
+  "package_versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.1.3",
+    "joblib": "1.6.0"
+  },
+  "data_sha256": {
+    "train.csv": "92418b8441d058cfc68e939dd88725610750be4bc8edc51253cffc72fc4fc0ab",
+    "test.csv": "e7e7f29a9b6251308e470ae3fb040a6da0cd8fcb0adb87e67f7761631c6a1ef0",
+    "sample_submission.csv": "1d0e9fe0b5ab5c763eab8c97130a06712e2ac2b428299481109b447d8f2b4d84"
+  },
+  "lab_config_sha256": "1b09c6c9b952c3066e4c0cd08369e11661f464cca91437808f22663eb0a668b6",
+  "source_genes_sha256": "191ebb1d873e3afcd4656aa7363d9c97d7d9920bbdeafa7b4701121cd15ca48e",
+  "reference_oof_sha256": "ab952812c5b779bbaee826bc9163579268cffbf50dd567fb2162c5600bec08e9",
+  "best_oof_sha256": "f4ede5b52937a5c8fc5902413da2e6a15b0add0fb22dc20a6f80a639cd90e517",
+  "bias_receipts_sha256": "5cf3bf0166b0474801b65c069d1c390029b9fac4c09566fd5699121f4e984020",
+  "source_complete_sha256": {
+    "h1": "5a5bfb4e1015d839d4aa27af5aaa4ebb582b13d3bfc459c57d05793dca76585d",
+    "c10": "3e07d4ea11a67fe67243464997ff6748ed2003a2249c25915c5662886453e2a4",
+    "nested_bias": "e5855a88b92a26e93ed826a18bd7468eb82176563cc3d956155723fe19b2c7d7"
+  },
+  "provenance": {
+    "development_only_oof": true,
+    "seed44_confirmation_run": false,
+    "test_used_for_model_or_rule_selection": false,
+    "stored_outer_models_only": true,
+    "bias_learned_from_strict_inner_oof_only": true,
+    "support_guard_uses_features_only": true,
+    "oof_score_is_not_a_test_score": true,
+    "submission_upload_performed_by_runner": false
+  }
+}

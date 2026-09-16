@@ -1,0 +1,27 @@
+{
+  "schema_version": "TASK10_RUNNER_ACCEPTANCE_V1",
+  "status": "PASS",
+  "source_hashes": {
+    "atomic_state.py": "c4a096aa7e16fdbfed8dd5e7f8db8fc541b38ae61b28602931971b2701c9b507",
+    "runner.py": "7635d79bde5673db499916e832fb2410f1b4a1dd1bbee1f49addd09869ed62d2",
+    "cli.py": "fe8a2fbb87fc7c0c49aa11086c9c96952e6dcddd4040b2652c677d088b94058a",
+    "runtime_config.template.json": "77e8378a004375d20b33ece1ae998fc7c0ea10d9ecdfbd6bdc26c27fc9c7f663"
+  },
+  "test_hashes": {
+    "tests/test_runner.py": "aa17dfc99d05f6dfc86c88b53b64003e73f9350c20a28d2e9cd7d60cda4c1630",
+    "tests/test_cli.py": "e0b6fbb5fe569ee72ce55fed4b35feb405b2cbc93e95c0505310ad94f63f4cbf"
+  },
+  "tests": {"count": 6, "result": "PASS"},
+  "lifecycle": {
+    "double_fork_session": true,
+    "live_second_start": "ALREADY_RUNNING",
+    "start_flag_required": true,
+    "status_creates_run_root": false,
+    "stop_or_kill_command_exposed": false
+  },
+  "resume_boundaries": ["feature_state", "model", "inner_oof", "round_manifest", "outer_refit", "fold_completion"],
+  "durable_files": ["STATE.json", "HEARTBEAT.json", "events.jsonl", "COMPLETE.json", "runner.log"],
+  "immutable_runtime_hashes": ["source", "runtime", "data", "partition", "admission", "class_order"],
+  "automatic_next_bundle": false,
+  "submission": false
+}

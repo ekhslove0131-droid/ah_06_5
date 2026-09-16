@@ -1,0 +1,44 @@
+{
+  "schema_version": "TASK5_ANCHOR_ACCEPTANCE_V1",
+  "status": "PASS",
+  "scope": "synthetic contract tests plus immutable historical OOF replay; no new real-data fit",
+  "source_hashes": {
+    "anchor_pipeline.py": "b4557ab328bac1dadd910d40ac8e9ade499a2ba1fa475949ce4a1930de3a89a2",
+    "log_bias.py": "727fe7d6a938aa0d19e4fb18a6b7c02058712aa67dbf8e42c2642b766d365944",
+    "support_guard.py": "202f3bb265cec3223ef125d3c243a72d85c97cb95c524c10972af78376cc8a41"
+  },
+  "test_hashes": {
+    "tests/test_anchors.py": "7c3619c688ddcb828d8ab7ce1116e60d52e1f52e972aa6e21a7538e6d97603f3",
+    "tests/test_log_bias.py": "16597d9ad6f17c36554d315e803aef2135599eaaaa0eba291b38f06ead3f3ed2"
+  },
+  "tests": {
+    "command": "/Users/baital/dev/finalhack/cbj_windows_lab/submission_best05204/.venv-replay/bin/python -W error -m unittest tests.test_anchors tests.test_log_bias -v",
+    "count": 9,
+    "result": "PASS"
+  },
+  "nested_label_isolation": {
+    "same_or_outer_validation_labels_in_anchor_api": false,
+    "a2_bias_source": "subinner C10 exact-once OOF labels only",
+    "synthetic_invariance_test": "PASS"
+  },
+  "historical_replay": {
+    "claim_type": "immutable replay, not a new fit score",
+    "A1_GEOMETRIC_GUARD": {
+      "macro_f1": 0.5127255062867847,
+      "oof_sha256": "3b668367ca6d48f9c05f2a507458b6e0d530322722c99422980aba353722084a",
+      "argmax_sha256": "1f8f42adfac600311cf7f661e99c30c9cd2029eee2affcc46759c8b7edaacf96"
+    },
+    "A2_C10_BIAS_GEOMETRIC_GUARD": {
+      "macro_f1": 0.5204059148667912,
+      "oof_sha256": "f4ede5b52937a5c8fc5902413da2e6a15b0add0fb22dc20a6f80a639cd90e517",
+      "argmax_sha256": "26c51cae601da997e52329d68637aa626fc1fadd9e0ced79fc6deff9d77c528f"
+    },
+    "guarded_rows": 94,
+    "guard_mask_sha256": "4db5857f00e06ea227849c60637e4731547d24a4e35e369845320f76918ac94f"
+  },
+  "forbidden_data": {
+    "test_read": false,
+    "server_score_used": false,
+    "submission": false
+  }
+}

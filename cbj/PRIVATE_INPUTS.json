@@ -1,0 +1,140 @@
+{
+  "schema_version": "CBJ_PRIVATE_INPUTS_V1",
+  "purpose": "Names, roles, exact hashes, shapes, and frozen references only. No private bytes are included.",
+  "inputs": [
+    {
+      "name": "train.csv",
+      "role": "labeled 26-class training table",
+      "sha256": "92418b8441d058cfc68e939dd88725610750be4bc8edc51253cffc72fc4fc0ab",
+      "shape": [6201, 4386],
+      "reference": "staged_team_ensemble_20260916_recovery_v2/runtime_config.recovery.windows.json:train_csv",
+      "included": false
+    },
+    {
+      "name": "test.csv",
+      "role": "unlabeled competition inference table; not used for selection",
+      "sha256": "e7e7f29a9b6251308e470ae3fb040a6da0cd8fcb0adb87e67f7761631c6a1ef0",
+      "shape": [2546, 4385],
+      "reference": "staged_team_ensemble_20260916_recovery_v2/runtime_config.recovery.windows.json:test_csv",
+      "included": false
+    },
+    {
+      "name": "sample_submission.csv",
+      "role": "test ID order and two-column submission contract",
+      "sha256": "1d0e9fe0b5ab5c763eab8c97130a06712e2ac2b428299481109b447d8f2b4d84",
+      "shape": [2546, 2],
+      "reference": "staged_stack7_crossblend_20260916_v1/runtime_config.windows.json:sample_submission_csv",
+      "included": false
+    },
+    {
+      "name": "mrmr_global_oof.npz",
+      "role": "canonical ID, y, group, fold, class order and reference OOF probability",
+      "sha256": "ab952812c5b779bbaee826bc9163579268cffbf50dd567fb2162c5600bec08e9",
+      "shape": {
+        "ids_y_groups_folds": [6201],
+        "class_order": [26],
+        "prob": [6201, 26]
+      },
+      "reference": "staged_team_ensemble_20260916_recovery_v2/runtime_config.recovery.windows.json:reference_oof",
+      "included": false
+    },
+    {
+      "name": "EVIDENCE.npz",
+      "role": "frozen train-only 124-candidate inner evidence",
+      "sha256": "461c5930b0dd094f13c9659eb720676b624efac9ccceddf4f067f59659dd914f",
+      "shape": {
+        "candidate_probabilities": [124, 4959, 26],
+        "identity_rows": 4959,
+        "classes": 26
+      },
+      "reference": "staged_combo_search_20260916_v3/runtime_config.windows.json:evidence_npz",
+      "included": false
+    },
+    {
+      "name": "FROZEN_RECIPE.joblib",
+      "role": "completed combo V3 selected graph",
+      "sha256": "f7bc3184d06f20c616268db0a59a1abce042931cfccf1553d31107d5aec4f9ec",
+      "shape": {
+        "format": "joblib",
+        "bytes": 4498
+      },
+      "reference": "staged_stack7_meta_20260916_v1/runtime_config.windows.json:v3_frozen_recipe_sha256",
+      "included": false
+    },
+    {
+      "name": "TRAINING_BANK.npz",
+      "role": "seven frozen base-model probability bank",
+      "sha256": "934119e7cf89d1bf0ee3405b192b288feb5444bfcf7bebff2ef8ee2612b4fb9f",
+      "shape": {
+        "inner_probability": [7, 4959, 26],
+        "full_oof_probability": [7, 6201, 26]
+      },
+      "reference": "staged_stack7_20260916_v3/BANK_MANIFEST.json and downstream runtime configs",
+      "included": false
+    },
+    {
+      "name": "combo_v3_predictions.npz",
+      "role": "frozen combo V3 full OOF and test probabilities",
+      "sha256": "33c0e538a379dd3299117c7cf93546bf32a306f00ab95cc18daf81c5ba916796",
+      "shape": {
+        "oof_probability": [6201, 26],
+        "test_probability": [2546, 26]
+      },
+      "reference": "staged_stack7_meta_20260916_v1/runtime_config.windows.json:v3_predictions_npz",
+      "included": false
+    },
+    {
+      "name": "linear_stack7_predictions.npz",
+      "role": "frozen linear parent full OOF and test probabilities",
+      "sha256": "af024e7c59ea43801c1cfc12b6acee29c3a6d15ae449d2564d4c23f752956547",
+      "shape": {
+        "oof_probability": [6201, 26],
+        "test_probability": [2546, 26]
+      },
+      "reference": "crossblend parent linear deployment",
+      "included": false
+    },
+    {
+      "name": "catboost_stack7_predictions.npz",
+      "role": "frozen nonlinear parent full OOF and test probabilities",
+      "sha256": "b47a5306a6ab8f3ebc7bf3495f7ae09edbb98af02701d9f36c685a025de2a55f",
+      "shape": {
+        "oof_probability": [6201, 26],
+        "test_probability": [2546, 26]
+      },
+      "reference": "crossblend parent nonlinear deployment",
+      "included": false
+    },
+    {
+      "name": "crossblend_predictions.npz",
+      "role": "current best frozen full OOF and test probabilities",
+      "sha256": "0095317c0e9c9546940e81f92e03280b31156ff527f20fe004f5d12dacf37910",
+      "shape": {
+        "oof_probability": [6201, 26],
+        "test_probability": [2546, 26]
+      },
+      "reference": "staged_stack7_crossblend_20260916_v1 deployment COMPLETE receipt",
+      "included": false
+    },
+    {
+      "name": "linear_INNER_EXPORT.npz",
+      "role": "frozen linear parent inner selection probability",
+      "sha256": "6a9bac51e4d7d2e94ed9ba045e8ca93836cae90f4c94996401a06d3f1398e710",
+      "shape": {
+        "probability": [4959, 26]
+      },
+      "reference": "staged_stack7_crossblend_20260916_v1 linear export receipt",
+      "included": false
+    },
+    {
+      "name": "nonlinear_INNER_EXPORT.npz",
+      "role": "frozen CatBoost parent inner selection probability",
+      "sha256": "2c531ae2e4b9bd9b456d259c26238602594b1cb808fcaa3e1cbd14a506ce7ed4",
+      "shape": {
+        "probability": [4959, 26]
+      },
+      "reference": "staged_stack7_crossblend_20260916_v1 nonlinear export receipt",
+      "included": false
+    }
+  ]
+}

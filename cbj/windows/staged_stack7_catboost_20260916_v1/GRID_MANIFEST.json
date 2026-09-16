@@ -1,0 +1,432 @@
+{
+  "schema_version": "STACK7_META_GRID_V1",
+  "declarations": [
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 3,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 5,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 200,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 200,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 600,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 600,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 1200,
+      "l2_leaf_reg": 3,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "depth": 7,
+      "iterations": 1200,
+      "l2_leaf_reg": 30,
+      "weighting": "balanced"
+    }
+  ],
+  "axes": {
+    "representations": [
+      "log_probability_confidence"
+    ],
+    "depth": [
+      3,
+      5,
+      7
+    ],
+    "iterations": [
+      200,
+      600,
+      1200
+    ],
+    "l2_leaf_reg": [
+      3,
+      30
+    ],
+    "weightings": [
+      "none",
+      "sqrt_inverse",
+      "balanced"
+    ],
+    "inner_folds": [
+      0,
+      1,
+      2
+    ],
+    "alphas": [
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "poolings": [
+      "arithmetic",
+      "geometric"
+    ]
+  },
+  "counts": {
+    "heads": 54,
+    "inner_fits": 162,
+    "mixtures": 540,
+    "controls": 1,
+    "score_rows": 541
+  },
+  "ordering": "declarations_then_alpha_then_pooling_with_baseline_control_first",
+  "alpha_one_geometric_is_alias": true
+}

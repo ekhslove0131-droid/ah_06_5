@@ -1,0 +1,107 @@
+{
+  "schema_version": "CBJ_DOWNLOADED_SOURCE_PROVENANCE_V1",
+  "download_date": "2026-09-16",
+  "owner": "bjcoding",
+  "current_execution": "NOT_RUN_DURING_PUBLICATION",
+  "upstream_notebook_status": "All four kernel status requests returned KernelWorkerStatus.COMPLETE on retrieval; this is historical remote state, not a new replay or proof that every contained candidate succeeded.",
+  "privacy": "Original kernels remain private. This authorized public GitHub copy includes source only, not data/model/output contents.",
+  "notebook_transform": "Clear cell outputs, execution counts and execution metadata; cell source unchanged; nbformat validation passed.",
+  "files": [
+    {
+      "path": "cbj-catboost-t4x2/cbj-catboost-t4x2.ipynb",
+      "downloaded_sha256": "3caf2ed5716c673785821cdee8a93fe2269a48323008eee22edc19025fd18610",
+      "published_sha256": "a978d475b2444929965a1f6725ecb153132d0bac9d4f18779f8666ff2dfbc8f3",
+      "published_bytes": 3312,
+      "source_url": "https://www.kaggle.com/code/bjcoding/cbj-catboost-t4x2",
+      "transformation": "sanitized_notebook_source_unchanged"
+    },
+    {
+      "path": "cbj-catboost-t4x2/kernel-metadata.json",
+      "downloaded_sha256": "6fe636e4808a57964416b497c6e52ddb91e7727d8755e473ab1132cf61fd3422",
+      "published_sha256": "6fe636e4808a57964416b497c6e52ddb91e7727d8755e473ab1132cf61fd3422",
+      "published_bytes": 769,
+      "source_url": "https://www.kaggle.com/code/bjcoding/cbj-catboost-t4x2",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "cbj-subclass-anchor-evaluation/cbj-subclass-anchor-evaluation.ipynb",
+      "downloaded_sha256": "f876703f6c82db3aadc135aaf8f625ae8bcfd889e534a7e9f57eb3fa90d2e277",
+      "published_sha256": "7c82710f793c7833337c4b5e9f217233308cdcb2ecf29ae82e787c903c42f099",
+      "published_bytes": 28766,
+      "source_url": "https://www.kaggle.com/code/bjcoding/cbj-subclass-anchor-evaluation",
+      "transformation": "sanitized_notebook_source_unchanged"
+    },
+    {
+      "path": "cbj-subclass-anchor-evaluation/kernel-metadata.json",
+      "downloaded_sha256": "56213d01affb8102de4e1c25a39b9decacb5f8967b48062c4bacde7de8be7c99",
+      "published_sha256": "56213d01affb8102de4e1c25a39b9decacb5f8967b48062c4bacde7de8be7c99",
+      "published_bytes": 695,
+      "source_url": "https://www.kaggle.com/code/bjcoding/cbj-subclass-anchor-evaluation",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "cbj-subclass-anchor-preparation/cbj-subclass-anchor-preparation.ipynb",
+      "downloaded_sha256": "ffae9837a4aeef1fadf69448e64256115c72c1e3aa57f0624003a6e557740b51",
+      "published_sha256": "b351f1d27582bf6be682456cb94d1526d57bcbb9603b9d8aeb4bac06322f8d74",
+      "published_bytes": 63016,
+      "source_url": "https://www.kaggle.com/code/bjcoding/cbj-subclass-anchor-preparation",
+      "transformation": "sanitized_notebook_source_unchanged"
+    },
+    {
+      "path": "cbj-subclass-anchor-preparation/kernel-metadata.json",
+      "downloaded_sha256": "9703aa50fb8f550798ae362a025b44af364c27754a4a5638b463e4fafc8d8f0e",
+      "published_sha256": "9703aa50fb8f550798ae362a025b44af364c27754a4a5638b463e4fafc8d8f0e",
+      "published_bytes": 648,
+      "source_url": "https://www.kaggle.com/code/bjcoding/cbj-subclass-anchor-preparation",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "cbj-subclass-full-eda-and-xgb-baseline/cbj-subclass-full-eda-and-xgb-baseline.ipynb",
+      "downloaded_sha256": "c1cea26a289c5b6f16e48bd611a247486bde7e3cedf8833a538c6c1f20ee7526",
+      "published_sha256": "cbe14feef96755877bb2db1a77314cce7f9972551ad2f3760197a6352c752ebf",
+      "published_bytes": 41377,
+      "source_url": "https://www.kaggle.com/code/bjcoding/cbj-subclass-full-eda-and-xgb-baseline",
+      "transformation": "sanitized_notebook_source_unchanged"
+    },
+    {
+      "path": "cbj-subclass-full-eda-and-xgb-baseline/kernel-metadata.json",
+      "downloaded_sha256": "246fae3295537c889a1a7229168d616679f4fb7edac722a3b8590ea6f772102e",
+      "published_sha256": "246fae3295537c889a1a7229168d616679f4fb7edac722a3b8590ea6f772102e",
+      "published_bytes": 669,
+      "source_url": "https://www.kaggle.com/code/bjcoding/cbj-subclass-full-eda-and-xgb-baseline",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "shared_code/cbj_anchor_evaluate.py",
+      "downloaded_sha256": "e97f13ee7f10aa6a64691085732dddab410630b48223532acc92c2450cfea498",
+      "published_sha256": "e97f13ee7f10aa6a64691085732dddab410630b48223532acc92c2450cfea498",
+      "published_bytes": 14411,
+      "source_url": "https://www.kaggle.com/datasets/bjcoding/cbj-subclass-tree-code",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "shared_code/cbj_catboost_gpu_config.json",
+      "downloaded_sha256": "1f29755014743a40ea6a73d70b869bbf4114523a3e03a389a4bce32b5069f86d",
+      "published_sha256": "1f29755014743a40ea6a73d70b869bbf4114523a3e03a389a4bce32b5069f86d",
+      "published_bytes": 2097,
+      "source_url": "https://www.kaggle.com/datasets/bjcoding/cbj-subclass-tree-code",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "shared_code/cbj_composition_features.py",
+      "downloaded_sha256": "645e679b78dadef3c8de595be9ba25daa32ff5aa18ce4f9901be550a5a4fd365",
+      "published_sha256": "645e679b78dadef3c8de595be9ba25daa32ff5aa18ce4f9901be550a5a4fd365",
+      "published_bytes": 2414,
+      "source_url": "https://www.kaggle.com/datasets/bjcoding/cbj-subclass-tree-code",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "shared_code/cbj_tree_experiments.py",
+      "downloaded_sha256": "948e5144f0d11118e1a38571416c8f768247082451f891fba2044c1037aff638",
+      "published_sha256": "948e5144f0d11118e1a38571416c8f768247082451f891fba2044c1037aff638",
+      "published_bytes": 19470,
+      "source_url": "https://www.kaggle.com/datasets/bjcoding/cbj-subclass-tree-code",
+      "transformation": "exact_bytes"
+    }
+  ]
+}

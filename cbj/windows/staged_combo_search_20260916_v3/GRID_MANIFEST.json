@@ -1,0 +1,39 @@
+{
+  "schema_version": "CBJ_COMBO_GRID_V1",
+  "status": "PREPARED_NOT_STARTED",
+  "base_candidates_required": 124,
+  "inner_folds_required": 3,
+  "anchors": ["A1_GEOMETRIC_GUARD", "A2_C10_BIAS_GEOMETRIC_GUARD"],
+  "reference_probabilities": ["latest_frozen_stage", "A1_GEOMETRIC_GUARD", "A2_C10_BIAS_GEOMETRIC_GUARD"],
+  "c0": {
+    "candidate_count": 124,
+    "reference_count": 3,
+    "pooling": ["arithmetic", "geometric"],
+    "candidate_alpha": [0.05, 0.10, 0.20, 0.35, 0.50],
+    "grid_rows": 3720,
+    "incumbent_rows": 1,
+    "total_rows": 3721
+  },
+  "parent_selection": {
+    "maximum": 6,
+    "incumbent_always_retained": true,
+    "minimum_f1": null,
+    "exact_probability_duplicates_are_new": false,
+    "first_pass": "best unique probability from each distinct candidate family, ordered by score then recipe_id",
+    "second_pass": "fill remaining slots from global score order with unique probabilities"
+  },
+  "meta_rounds": {
+    "maximum_complete_rounds": 2,
+    "simplex_step": 0.25,
+    "pooling": ["arithmetic", "geometric"],
+    "bias_strength": [0.0, 0.25, 0.5, 0.75, 1.0],
+    "six_parent_simplex_vectors": 126,
+    "maximum_rows_per_round": 1260,
+    "maximum_rows_two_rounds": 2520
+  },
+  "maximum_total_score_rows": 6241,
+  "selection_data": "outer0 inner OOF only",
+  "full_oof_role": "adaptive reporting and stage stopping only",
+  "test_role": "frozen deployment inference only",
+  "automatic_website_submission": false
+}

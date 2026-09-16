@@ -1,0 +1,17 @@
+{
+  "schema_version": "TASK2_PARTITION_ACCEPTANCE_V1",
+  "status": "PASS",
+  "outer_folds": 5,
+  "inner_folds_per_outer": 3,
+  "subinner_folds_per_inner": 3,
+  "inner_seed_formula": "2026091400+outer_index",
+  "subinner_seed_formula": "2026091500+10*outer_index+inner_index",
+  "group_intersections": 0,
+  "test_command": "/Users/baital/dev/finalhack/cbj_windows_lab/submission_best05204/.venv-replay/bin/python -W error -m unittest tests.test_inventory tests.test_partitions -v",
+  "tests_passed": 7,
+  "fit_calls": 0,
+  "sha256": {
+    "partition_contract.py": "4c52eca9c264ae7cb5a2c5e8683d5673ac1f9fc42352943aeeae10143f893674",
+    "tests/test_partitions.py": "599ee4c558992fd04ef16f7e9d285934da5f3973c6e7853f26688ca419fdbd91"
+  }
+}

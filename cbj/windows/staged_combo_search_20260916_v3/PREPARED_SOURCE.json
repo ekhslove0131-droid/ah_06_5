@@ -1,0 +1,33 @@
+{
+  "schema_version": "CBJ_COMBO_PREPARED_SOURCE_V1",
+  "status": "PREPARED_LOCAL_VERIFIED",
+  "meta_source_sha256": "96a6a4f5cd64f4437f6f39df1c87ef50cf50544160bfad3a2605bb42a7e354c5",
+  "runtime_config_windows_sha256": "c1f22d1d962bfa07c569c5580a386fe0eed12ff73d35fc24df843f6c76492df0",
+  "grid_manifest_sha256": "ec92ad5db63b01cbe7e3239af9fa9abb38608af90c6306ba6d7cc9a17dc8faa2",
+  "combo_log_bias_sha256": "34cded2b3ca00f2b06e3e9d806f1138b9ae280f65f0da34199c79eebae8afa20",
+  "tests": {
+    "passed": 28,
+    "failed": 0,
+    "elapsed_seconds": 17.593,
+    "verified_by": "root",
+    "includes": [
+      "canonical single-source alias replay",
+      "immutable completed score adoption",
+      "legacy completed grid replay without optimizer refits",
+      "original score ledger bytes and producer identities preserved",
+      "all preceding graph, integrity, crash-resume and deployment checks"
+    ]
+  },
+  "grid": {
+    "c0_declared_rows": 3721,
+    "maximum_meta_rows_per_round": 1260,
+    "complete_meta_rounds": 2,
+    "maximum_declared_rows": 6241,
+    "minimum_f1_gate": null,
+    "silent_truncation": false
+  },
+  "launch_allowed_now": false,
+  "launch_blocker": "Windows V3 tests and final review pending",
+  "score_producer_source_sha256": "be8cd02233b14174c32b64c4bc090f46d0c4c1fda1cbfd686c9f02f9e0f3edd5",
+  "score_producer_config_sha256": "92ac573b184ce8570f6091bee032d3c892f9b0f99888122ffcf5a5b2e1012845"
+}

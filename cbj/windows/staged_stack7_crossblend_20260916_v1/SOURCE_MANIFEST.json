@@ -1,0 +1,30 @@
+{
+  "schema_version": "STACK7_CROSSBLEND_SOURCE_MANIFEST_V1",
+  "source_sha256": "006ea767ff9bb377d89a74d96fe5c90ac65dedaa2b4c0daba33277d3509cbc9b",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "4b39bbda8f5624e9b5d11fe4109cc17546b2c270569fce22c5fd0141cbb4baae"
+    },
+    {
+      "path": "SOURCE_ALLOWLIST.txt",
+      "sha256": "8fd3aba4dc5d4a46503e2246f76e43f06dd7260265f4ac49a94eb1cbf0dcd1ca"
+    },
+    {
+      "path": "crossblend.py",
+      "sha256": "7821fe2beac56e5e6adce7c927cf5481a658778fbf459c6c1ccec579f59bb782"
+    },
+    {
+      "path": "runtime_config.template.json",
+      "sha256": "71ac4ee6bf423c4d8ea728a0fc94cf62becda3b0801192d7c6816e123214902d"
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "tests/test_crossblend.py",
+      "sha256": "84a950c5f03371de6129c05a08027b141e461037b42171df9e0b42972dc1309d"
+    }
+  ]
+}

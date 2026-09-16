@@ -1,0 +1,27 @@
+{
+  "id": "bjcoding/cbj-catboost-t4x2",
+  "id_no": 133696427,
+  "title": "cbj CatBoost T4x2",
+  "code_file": "cbj-catboost-t4x2.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "gpu"
+  ],
+  "dataset_sources": [
+    "bjcoding/cbj-subclass-mutation-input-private",
+    "bjcoding/cbj-subclass-tree-code"
+  ],
+  "kernel_sources": [
+    "bjcoding/cbj-subclass-anchor-preparation",
+    "bjcoding/cbj-subclass-anchor-evaluation"
+  ],
+  "competition_sources": [],
+  "model_sources": [],
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+  "machine_shape": "NvidiaTeslaT4"
+}

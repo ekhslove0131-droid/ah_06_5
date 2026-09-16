@@ -1,0 +1,32 @@
+{
+  "schema_version": "STACK7_CROSSBLEND_RUNTIME_CONFIG_V1",
+  "parents": {
+    "linear": {
+      "source_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_meta_20260916_v1",
+      "runtime_config_path": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_meta_20260916_v1/runtime_config.windows.json",
+      "expected_source_sha256": "e8b2ebb3d4a9db89e41594fbd7abbbb222de4a304f6e7a3342bd589be74d1626",
+      "expected_runtime_config_sha256": "628f3fbcc38716ff8ae521ca399de978a236369a7a12ebe1a758d01f22c664d1"
+    },
+    "nonlinear": {
+      "source_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_catboost_20260916_v1",
+      "runtime_config_path": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_catboost_20260916_v1/runtime_config.windows.json",
+      "expected_source_sha256": "ecd4637bdeccb33b65b07721203954b1cbdfcfcc287ed59f4dd904bdfef2b69f",
+      "expected_runtime_config_sha256": "b6875a9dbe9b72328632b9a462cabc8bbe5624373d59c1cd1458f2691b60e993"
+    }
+  },
+  "linear_inner_npz": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_crossblend_20260916_v1/runs/exports/linear/INNER_EXPORT.npz",
+  "linear_inner_receipt_json": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_crossblend_20260916_v1/runs/exports/linear/INNER_EXPORT.json",
+  "nonlinear_inner_npz": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_crossblend_20260916_v1/runs/exports/nonlinear/INNER_EXPORT.npz",
+  "nonlinear_inner_receipt_json": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_crossblend_20260916_v1/runs/exports/nonlinear/INNER_EXPORT.json",
+  "cross_search_run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_crossblend_20260916_v1/runs/search_crossblend_v1",
+  "cross_deployment_run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_crossblend_20260916_v1/runs/deployment_crossblend_v1",
+  "canonical_full_npz": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_20260916_v3/runs/training_bank_v3/TRAINING_BANK.npz",
+  "canonical_full_npz_sha256": "934119e7cf89d1bf0ee3405b192b288feb5444bfcf7bebff2ef8ee2612b4fb9f",
+  "sample_submission_csv": "/mnt/e/GPU-Workspace/cbj-gene-subtype/recovery_inference_20260916/sample_submission.csv",
+  "sample_submission_sha256": "1d0e9fe0b5ab5c763eab8c97130a06712e2ac2b428299481109b447d8f2b4d84",
+  "source_manifest_json": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_stack7_crossblend_20260916_v1/SOURCE_MANIFEST.json",
+  "source_manifest_sha256": "f404e8ba429d873a56553bea448b0e705a17b4530281056d57faefb96f70eb7a",
+  "own_source_sha256": "006ea767ff9bb377d89a74d96fe5c90ac65dedaa2b4c0daba33277d3509cbc9b",
+  "automatic_parent_fit": false,
+  "automatic_website_submission": false
+}

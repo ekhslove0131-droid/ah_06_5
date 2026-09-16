@@ -1,0 +1,43 @@
+{
+  "schema_version": "TEAM_WINDOWS_NATIVE_ACCEPTANCE_V1",
+  "status": "PASS",
+  "host": "winpc WSL2",
+  "destination": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260915_v1",
+  "source_composite_sha256": "6192a97496fbb7bb17fe52c259d1f9574a01c6884c9649e1a52fa73904fa9c43",
+  "runtime_config_sha256": "17cf18435d529930113b24046ab62181635d29a554769ebe45f8529f2984eb7f",
+  "remote_sha256sum_check": "PASS",
+  "windows_complete_suite": {
+    "tests": 80,
+    "passed": 80,
+    "skipped": 0,
+    "cuda_native_mode": true
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 3070 Ti",
+    "total_mib": 8192,
+    "free_mib_at_preflight": 7101,
+    "minimum_free_mib": 6500
+  },
+  "resources": {
+    "host_available_bytes": 29338804224,
+    "minimum_host_available_bytes": 17179869184,
+    "disk_available_bytes": 194252333056,
+    "minimum_disk_available_bytes": 107374182400,
+    "cpu_threads": 4
+  },
+  "preflight": {
+    "rows": 6201,
+    "classes": 26,
+    "outer_folds": 5,
+    "declared": 128,
+    "executable": 124,
+    "blocked": 4,
+    "fit_calls": 0,
+    "test_read": false,
+    "server_score_used": false,
+    "external_data_used": false,
+    "owned_worker_live": false,
+    "run_root_created": false
+  },
+  "start_admitted": true
+}

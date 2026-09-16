@@ -1,0 +1,17 @@
+{
+  "schema_version": "TASK3_FEATURE_ACCEPTANCE_V1",
+  "status": "PASS",
+  "families": ["T1", "T2", "T3", "T4", "T5", "T6"],
+  "semantic_tests": 8,
+  "cumulative_tests": 15,
+  "fit_scope": "synthetic_transform_only",
+  "classifier_fit_calls": 0,
+  "test_data_reads": 0,
+  "sha256": {
+    "raw_views.py": "433d40af2f2c692bdcaccba0bbf0a00f131e5198ba2a554635d2a204fae13c74",
+    "feature_transforms.py": "eacdba506f2d93778ecace9ed282d7b2e8e1d9386df903e1710042ac7cb93d97",
+    "vendor/mcmp_repr.py": "0673f10734aff57d6b356ee21661a45a9301b037e712a4a7f2d6d26fcff0b30b",
+    "tests/test_raw_views.py": "8034ba14f7ed04c65fe36eac492d8df274480d0f7b178169f1fddf6485ef47b3",
+    "tests/test_feature_transforms.py": "483c28be43f4c1ab0243ad3e15da0bfc1f4ccbbd73eec18948b1db182e942843"
+  }
+}

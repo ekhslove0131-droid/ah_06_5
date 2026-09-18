@@ -1,0 +1,21 @@
+{
+  "id": "bjcoding/cbj-subclass-full-eda-and-xgb-baseline",
+  "id_no": 133680266,
+  "title": "cbj SUBCLASS Full EDA and XGB Baseline",
+  "code_file": "cbj-subclass-full-eda-and-xgb-baseline.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "bjcoding/cbj-subclass-mutation-input-private"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": [],
+  "docker_image": "gcr.io/kaggle-images/python@sha256:dafd4ce5668bbf1ad422e4c109e0f18c9623c3a7c7f48b0235f13142755c40b9",
+  "machine_shape": "None"
+}

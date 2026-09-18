@@ -1,0 +1,20 @@
+{
+  "schema_version": "TASK4_MODEL_ACCEPTANCE_V1",
+  "status": "PASS_WITH_DECLARED_BLOCK",
+  "local_main_tests_passed": 29,
+  "local_torch_tests_passed": 4,
+  "windows_cuda_tests_passed": 3,
+  "windows_cuda_verified": ["XGBoost", "AE64", "class-specific FM", "token MLP"],
+  "reload_argmax_verified": true,
+  "lightgbm_gpu_declarations_blocked": 4,
+  "cpu_fallback": false,
+  "sha256": {
+    "resource_gate.py": "95514a3c93855d2ef336a8ef19eeede90d104bcbc73bba229398947dd6a27399",
+    "model_adapters.py": "d5dced23dddb05e6502d7616dc6558b00660aac64fbc5d6102d851296e0e1c2e",
+    "torch_models.py": "373cee0c8b3dc20cfee92c24e4234bdefa19eb676317a7afbe65576dcdf1260a",
+    "tests/test_resource_gate.py": "e18e10d1d8d853057de58974db9a0c82b21c228762f680bdd897d89b042dedf2",
+    "tests/test_models.py": "90e8c3f5d6c0b39be279ad062a8de8a66012199adcf7c0904a9de8aae16b9479",
+    "tests/test_torch_models.py": "5ad7c4b2218828112539f5994e9e965f389d9ddfff8c88557a9f030d11330ac2",
+    "tests/test_gpu_native.py": "167bffc3886adcefcbce7f6a0485af48365ac8bcfa18d4265d7dd326b15cfa40"
+  }
+}

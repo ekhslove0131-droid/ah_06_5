@@ -1,0 +1,8 @@
+BANK_MANIFEST.json
+README.md
+SOURCE_ALLOWLIST.txt
+cli.py
+runtime_config.template.json
+training_bank.py
+tests/__init__.py
+tests/test_training_bank.py

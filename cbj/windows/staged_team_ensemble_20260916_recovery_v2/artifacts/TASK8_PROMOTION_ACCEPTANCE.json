@@ -1,0 +1,29 @@
+{
+  "schema_version": "TASK8_PROMOTION_ACCEPTANCE_V1",
+  "status": "PASS",
+  "source_hashes": {
+    "promotion.py": "57dbdf65681d9976e125cc2c447ba3ac97b6f3f8742ef4066498fdbfd20971e9",
+    "meta_rounds.py": "b0e8a00dd4dd0e291ae6b88a33d0b9b0bb9bdb43244d086217330b183098ef0c"
+  },
+  "test_hashes": {
+    "tests/test_promotion.py": "5d6093590689968bcab6782098cede9bd332425076d7c936abbc1074c07d3332",
+    "tests/test_meta_rounds.py": "02421f01aea81de3a0d9c4637bede8ff2786b770b18fdc42d88f366e93e8b4d3"
+  },
+  "promotion": {
+    "threshold": 0.55,
+    "minimum_pairwise_disagreement": 0.03,
+    "maximum_retained": 8,
+    "duplicate_predictions_fill_multiple_slots": false
+  },
+  "dynamic_grid": {
+    "weight_units": 4,
+    "step": 0.25,
+    "corrected_vector_count_formula": "comb(n+3,4)",
+    "maximum_n8_vectors": 330,
+    "pooling_rules": 2,
+    "bias_strengths": [0.0, 0.25, 0.5, 0.75, 1.0]
+  },
+  "stopping_paths_tested": ["FEWER_THAN_TWO_PROMOTED", "NO_STRICT_IMPROVEMENT", "MAX_ROUNDS_COMPLETE"],
+  "tests": {"count": 7, "result": "PASS", "complete_round_before_stop": true},
+  "test_read": false
+}

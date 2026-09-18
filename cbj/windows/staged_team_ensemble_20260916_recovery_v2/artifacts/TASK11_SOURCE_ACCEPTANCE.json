@@ -1,0 +1,30 @@
+{
+  "schema_version": "TASK11_SOURCE_ACCEPTANCE_V1",
+  "status": "PASS",
+  "source_hashes": {
+    "workflow.py": "59aca856b11bd39ff9a8f10cbc31846e434e9c1d516f37f8b9ebc6601e108334",
+    "numeric_views.py": "00eedde038f4d84bd4aff973f84d6492e7bd15a5563c6d75b28024561b240b80",
+    "source_closure.py": "2fdd5be8fcce33fbae43c8fab9270e4dd852b850a675cb042df075026c529713",
+    "eligibility_audit.py": "70bdfd0530c4b8d427925f71508e12b4c3de0a31f5f05370412a23e03416bb90",
+    "README_KO.md": "263db2d4e55a5c365df852afbf0f5aded1f8c260b66ce99771eeee0a9c430571"
+  },
+  "test_hashes": {
+    "tests/test_end_to_end.py": "8995f08c900d7899b8a4253c74a8a56177dd285f3ded50cb3921ec6f0cdc8283",
+    "tests/test_source_closure.py": "009762dab6999944b1e527805ad9b0296a4cf39935ee29322e26f76abcbbd816"
+  },
+  "admission": {"declared": 128, "executable": 124, "blocked": 4, "ineligible": 0},
+  "synthetic_end_to_end": {
+    "exact_resume": true,
+    "round0_records": 280,
+    "meta_round_complete": true,
+    "outer_exact_once": true,
+    "real_fit_calls": 0
+  },
+  "forbidden_sentinels": {
+    "test.csv": "NOT_READ",
+    "sample_submission.csv": "NOT_READ",
+    "server_score.json": "NOT_READ",
+    "external_data_used": false
+  },
+  "local_suite": {"tests_discovered": 80, "passed": 73, "windows_only_skipped": 7, "result": "PASS"}
+}

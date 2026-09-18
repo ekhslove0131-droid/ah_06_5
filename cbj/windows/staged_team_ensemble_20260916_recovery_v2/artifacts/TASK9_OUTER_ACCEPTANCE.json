@@ -1,0 +1,38 @@
+{
+  "schema_version": "TASK9_OUTER_ACCEPTANCE_V1",
+  "status": "PASS",
+  "scope": "synthetic nested selection/refit/OOF replay; no real-data model fit",
+  "source_hashes": {
+    "outer_procedure.py": "bb862ce73610b1b325e4f6d9b35bb72520f9ee8d352285a58bb98a5bea7e4e4c",
+    "metrics.py": "119601e3af22e6be667d8f9b38b31ab8376e5f276a20af54b987a5ccc94e15c1",
+    "meta_rounds.py": "b0e8a00dd4dd0e291ae6b88a33d0b9b0bb9bdb43244d086217330b183098ef0c"
+  },
+  "test_hashes": {
+    "tests/test_outer_procedure.py": "036ba75b3b6849c4cd9a00d6ec72d2bf378b1c4873c80a150aa08ba91d9a50e2",
+    "tests/test_metrics.py": "39fb2fcded2a8510fc5441d27cf4c2e4c358ae35cd6124e31bfbeed67d608a01"
+  },
+  "tests": {"count": 6, "result": "PASS"},
+  "outer_isolation": {
+    "outer_valid_labels_in_selection_api": false,
+    "outer_valid_labels_in_refit_api": false,
+    "selection_frozen_before_outer_prediction": true
+  },
+  "outer_refit": {
+    "positive_weight_base_components_only": true,
+    "anchor_components": ["H1", "C10"],
+    "inner_selected_weights_pooling_bias_applied_without_adjustment": true
+  },
+  "final_oof": {
+    "exact_once_coverage": true,
+    "five_fold_receipts": true,
+    "group_crossing_rejected": true,
+    "terminal_independent_macro_f1_recompute": true
+  },
+  "milestones": {
+    "target": 0.60,
+    "target_status": "TARGET_REACHED",
+    "below_target_status": "BUNDLE_COMPLETE_REVIEW",
+    "automatic_next_bundle": false,
+    "submission": false
+  }
+}

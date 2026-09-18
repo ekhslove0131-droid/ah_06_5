@@ -1,0 +1,21 @@
+{
+  "schema_version": "TASK7_ROUND0_ACCEPTANCE_V1",
+  "status": "PASS",
+  "source_hashes": {
+    "ensemble_grid.py": "5278f901022e63644bc10338125157acdf2d124b5a9f331388cf1749022506e1",
+    "slot_selector.py": "3282cd42f7fe1ba760c3b634d3b973f69e7af7a306ed235e894febcf10f9c801"
+  },
+  "test_hash": "1d781067b0dcc047e80d2e7c863c20155bc4d3a2f18b6a52874599db35e77357",
+  "formula_fixtures": {
+    "quarter_simplex_vectors": 70,
+    "anchor_branches": 2,
+    "pooling_rules": 2,
+    "round0_records": 280,
+    "weight_zero_inputs_ignored_before_validation": true,
+    "support_guard_applied_after_pooling": true
+  },
+  "tie_breaks": ["fewer_nonzero_weights", "arithmetic", "lexicographic_weights", "candidate_ids"],
+  "tests": {"count": 5, "result": "PASS", "duplicate_prediction_recipes_preserved": true},
+  "outer_validation_labels_in_api": false,
+  "test_read": false
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "CBJ_STACK7_BANK_MANIFEST_V1",
+  "status": "PREPARED_NOT_STARTED",
+  "model_order": [
+    "ANCHOR-H1",
+    "ANCHOR-C10",
+    "OLD-G3-0014",
+    "OLD-G3-0018",
+    "TEAM-T2-0005",
+    "TEAM-T2-0007",
+    "TEAM-T4-0007"
+  ],
+  "inner_shape": [7, 4959, 26],
+  "full_oof_shape": [7, 6201, 26],
+  "train_sha256": "92418b8441d058cfc68e939dd88725610750be4bc8edc51253cffc72fc4fc0ab",
+  "reference_sha256": "ab952812c5b779bbaee826bc9163579268cffbf50dd567fb2162c5600bec08e9",
+  "evidence_sha256": "461c5930b0dd094f13c9659eb720676b624efac9ccceddf4f067f59659dd914f",
+  "base_source_sha256": "b56d607e5da1edf3f0e4c97e426182896f094ba35faf038735ceabe03b343b52",
+  "test_probability_read": false,
+  "test_data_read": false,
+  "meta_learning_started": false,
+  "automatic_website_submission": false
+}

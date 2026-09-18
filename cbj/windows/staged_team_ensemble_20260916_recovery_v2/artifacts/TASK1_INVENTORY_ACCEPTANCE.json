@@ -1,0 +1,16 @@
+{
+  "schema_version": "TASK1_INVENTORY_ACCEPTANCE_V1",
+  "status": "PASS",
+  "declared_count": 128,
+  "source_counts": {"OLD": 80, "TEAM": 48},
+  "test_command": "python3 -W error -m unittest tests.test_inventory -v",
+  "tests_passed": 4,
+  "fit_calls": 0,
+  "sha256": {
+    "contracts.py": "912510d69486f8340d485e61a7bccc94c1cbe46b72634f505e10fe19088cf8df",
+    "inventory.py": "14ca036c87ee1bceac4f3632743b15df7452d252260f718c7f231f8fe69c0b46",
+    "fixtures/old_grid_80.json": "eab8a7db5ee5a95fcee4314256e0ca445fc1587c5e8ef8bd2e268dd3f6113ff1",
+    "fixtures/team_grid_48.json": "25d5bcaaf4036a587251777af2767ede3af221c662230fdcb8983844baffab7d",
+    "tests/test_inventory.py": "50e2df464c8a4d48bfb703f22d3491f86ee26233712c1f6b31fb6f193c217b9e"
+  }
+}

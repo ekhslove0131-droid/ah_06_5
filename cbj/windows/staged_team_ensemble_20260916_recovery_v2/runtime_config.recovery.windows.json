@@ -1,0 +1,23 @@
+{
+  "schema_version": "GRADED_RECOVERY_RUNTIME_CONFIG_V1",
+  "run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260916_recovery_v2/runs/graded_recovery_v2",
+  "train_csv": "/mnt/e/GPU-Workspace/cbj-gene-subtype/inputs/train.csv",
+  "train_sha256": "92418b8441d058cfc68e939dd88725610750be4bc8edc51253cffc72fc4fc0ab",
+  "reference_oof": "/mnt/e/GPU-Workspace/cbj-gene-subtype/runs/windows_20260913_repeat_v1/seed_43/mrmr_global_oof.npz",
+  "reference_oof_sha256": "ab952812c5b779bbaee826bc9163579268cffbf50dd567fb2162c5600bec08e9",
+  "old_source_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260915_v1",
+  "old_source_closure_json": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260915_v1/artifacts/SOURCE_CLOSURE.json",
+  "old_run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260915_v1/runs/team_ensemble_v1",
+  "test_csv": "/mnt/e/GPU-Workspace/cbj-gene-subtype/recovery_inference_20260916/test.csv",
+  "test_sha256": "e7e7f29a9b6251308e470ae3fb040a6da0cd8fcb0adb87e67f7761631c6a1ef0",
+  "sample_submission_csv": "/mnt/e/GPU-Workspace/cbj-gene-subtype/recovery_inference_20260916/sample_submission.csv",
+  "sample_submission_sha256": "1d0e9fe0b5ab5c763eab8c97130a06712e2ac2b428299481109b447d8f2b4d84",
+  "minimum_gpu_free_mib": 6000,
+  "minimum_host_available_bytes": 12884901888,
+  "minimum_disk_free_bytes": 53687091200,
+  "target_macro_f1": 0.60,
+  "cuda_device": "cuda:0",
+  "cpu_threads": 4,
+  "website_submission": false,
+  "external_data_used": false
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "GRADED_RECOVERY_ACCEPTANCE_V1",
+  "status": "PASS_AND_LAUNCHED",
+  "run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260916_recovery_v2/runs/graded_recovery_v2",
+  "source_sha256": "b56d607e5da1edf3f0e4c97e426182896f094ba35faf038735ceabe03b343b52",
+  "runtime_config_sha256": "617fd8d1c3b256bf1468fa2387e8f907ce72dede31e551bffdb58c106f42a863",
+  "launch_pid": 34109,
+  "checks": {
+    "local_recovery_and_model_tests": {
+      "passed": 11,
+      "failed": 0
+    },
+    "windows_recovery_and_model_tests": {
+      "passed": 11,
+      "failed": 0
+    },
+    "windows_native_t4_ae64_workflow": {
+      "passed": 1,
+      "failed": 0,
+      "scope": "real feature transform through workflow._fit_prepared AE64 and logistic predict on cuda:0"
+    },
+    "old_cache_reconstruction": {
+      "candidate_count": 105,
+      "candidate_fold_indexes": 315,
+      "anchor_fits": 15,
+      "outer0_rows": 4959,
+      "inner_fold_rows": [1653, 1653, 1653],
+      "top_candidate": "OLD-G3-0012",
+      "top_candidate_macro_f1": 0.45686510361603205,
+      "old_source_sha256": "6192a97496fbb7bb17fe52c259d1f9574a01c6884c9649e1a52fa73904fa9c43"
+    },
+    "test_used_for_recipe_selection": false,
+    "website_submission": false
+  },
+  "validation_scope": "A0 to B2 graded recovery with per-grade frozen selection, adaptive five-fold OOF, and CSV release gate; adaptive OOF is not independent nested validation"
+}

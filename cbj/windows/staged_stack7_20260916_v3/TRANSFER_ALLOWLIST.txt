@@ -1,0 +1,12 @@
+BANK_MANIFEST.json
+PREPARED_SOURCE.json
+README.md
+SOURCE_ALLOWLIST.txt
+SOURCE_MANIFEST.json
+TRANSFER_ALLOWLIST.txt
+cli.py
+runtime_config.template.json
+runtime_config.windows.json
+training_bank.py
+tests/__init__.py
+tests/test_training_bank.py

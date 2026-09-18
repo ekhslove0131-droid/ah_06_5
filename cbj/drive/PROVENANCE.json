@@ -1,0 +1,162 @@
+{
+  "schema_version": "CBJ_DOWNLOADED_SOURCE_PROVENANCE_V1",
+  "download_date": "2026-09-16",
+  "origin": "Personal CBJ Drive best05204 replay archive",
+  "folder_url": "https://drive.google.com/drive/folders/1crw7OkTuL4-uTjXdnLx89DAzhIfZlw2J",
+  "current_execution": "NOT_RUN_DURING_PUBLICATION",
+  "notebook_transform": "Clear cell outputs, execution counts and execution metadata; cell source unchanged; nbformat validation passed.",
+  "files": [
+    {
+      "path": "best05204/CBJ_BEST_0520406_FROZEN_REPLAY.ipynb",
+      "downloaded_sha256": "897066049a0b3694073d1ff65fac1f21c5d20b60c0199ea04d141ce49c108417",
+      "published_sha256": "abcc44533e1a946d86c8886a3681a796bf9741d31daeccb627ed17c053955b2f",
+      "published_bytes": 14626,
+      "source_url": "https://drive.google.com/file/d/1gCuxmrfk-zVx4dG1Ojxm91uVkcxBJ2vr/view",
+      "transformation": "sanitized_notebook_source_unchanged"
+    },
+    {
+      "path": "best05204/COLAB_EXECUTION_RECEIPT_20260914.json",
+      "downloaded_sha256": "01d592f58760c6a886e29b07494733f7094fc478b10507e3037567eb053d7b69",
+      "published_sha256": "01d592f58760c6a886e29b07494733f7094fc478b10507e3037567eb053d7b69",
+      "published_bytes": 1410,
+      "source_url": "https://drive.google.com/file/d/1IaX8uXltYz2rQZ1zJJWhrP4MJO52_Z8u/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/README.md",
+      "downloaded_sha256": "d310ad53785a3da26230c0dc0d5d993752197f50d69b27e6a1ddde2469b3034f",
+      "published_sha256": "d310ad53785a3da26230c0dc0d5d993752197f50d69b27e6a1ddde2469b3034f",
+      "published_bytes": 1988,
+      "source_url": "https://drive.google.com/file/d/1C1deqbj1wak0rWPm2jiYuLJ0yH5Kdoem/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/best05204_config.json",
+      "downloaded_sha256": "1886e05ada248921185600f2c888fdc5dc3f4fda2c9f5c5571d9621f07ca15bc",
+      "published_sha256": "1886e05ada248921185600f2c888fdc5dc3f4fda2c9f5c5571d9621f07ca15bc",
+      "published_bytes": 2387,
+      "source_url": "https://drive.google.com/file/d/1ZpZSZox3O4HTVfCG4oYNLxx_9XAcZTEH/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/requirements.lock.txt",
+      "downloaded_sha256": "885ad9763d78340a485d6bf6e2bc46112f69f9ee86c197198f53d1586660af5c",
+      "published_sha256": "885ad9763d78340a485d6bf6e2bc46112f69f9ee86c197198f53d1586660af5c",
+      "published_bytes": 378,
+      "source_url": "https://drive.google.com/file/d/1UIOGFdNfZb2gg60ubxUydBIGiRYBIuaJ/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/cbj_lab.py",
+      "downloaded_sha256": "42634866db1ca79d43496425e4594f9b8c07693ac661971c5cf7f4974cb8d75f",
+      "published_sha256": "42634866db1ca79d43496425e4594f9b8c07693ac661971c5cf7f4974cb8d75f",
+      "published_bytes": 19243,
+      "source_url": "https://drive.google.com/file/d/1CefAGuuLCEkTzRtTpHOUk6QF435tx6Lq/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/cbj_repeat_seeds.py",
+      "downloaded_sha256": "959a49a2f26e77f975f5eeb96c8451ffc4d212510d48d8e7a42b3928a83ada9c",
+      "published_sha256": "959a49a2f26e77f975f5eeb96c8451ffc4d212510d48d8e7a42b3928a83ada9c",
+      "published_bytes": 17744,
+      "source_url": "https://drive.google.com/file/d/1ENIg0V5H1Ipc69VKrDALayYFRieU6SlK/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/cbj_summary_view.py",
+      "downloaded_sha256": "6c22fc5a5f8b4efe886a8d560a09e79b463968e7c45f6ed98ecc2d8c440d774b",
+      "published_sha256": "6c22fc5a5f8b4efe886a8d560a09e79b463968e7c45f6ed98ecc2d8c440d774b",
+      "published_bytes": 14225,
+      "source_url": "https://drive.google.com/file/d/1jKGJvFGSEMnup4CE8qxkhOiI3GI3Xh19/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_class_weight.py",
+      "downloaded_sha256": "2e8985eca08e37a4de466bc5d7c142d12f21b13f63c1e800203af210ac288e88",
+      "published_sha256": "2e8985eca08e37a4de466bc5d7c142d12f21b13f63c1e800203af210ac288e88",
+      "published_bytes": 16354,
+      "source_url": "https://drive.google.com/file/d/1yog-NtIJQ5OKksrwKtkX3lhSAV8n7bHy/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_geometric_support_guard.py",
+      "downloaded_sha256": "fff3d08b2133de09f6de557be3644caec42570decbb0435819f7ed725ee6a3df",
+      "published_sha256": "fff3d08b2133de09f6de557be3644caec42570decbb0435819f7ed725ee6a3df",
+      "published_bytes": 17397,
+      "source_url": "https://drive.google.com/file/d/1Mb0xBbuiukqxrBxMw6at8ohCwileKPnf/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_h1_runner.py",
+      "downloaded_sha256": "b97cab008975a49eb02331bf6770396f42bfd6b30f5637bf17737a9c09591dc4",
+      "published_sha256": "b97cab008975a49eb02331bf6770396f42bfd6b30f5637bf17737a9c09591dc4",
+      "published_bytes": 10931,
+      "source_url": "https://drive.google.com/file/d/1C-gjPpiIiL5h5hJBbMd3Z0IIUgACJVzZ/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_nested_macro_bias_v2.py",
+      "downloaded_sha256": "b45b1967c2579dbefeba0c6ea15124cae5b45de3fd4416deb2d2ef68295e9206",
+      "published_sha256": "b45b1967c2579dbefeba0c6ea15124cae5b45de3fd4416deb2d2ef68295e9206",
+      "published_bytes": 48624,
+      "source_url": "https://drive.google.com/file/d/1fohWLnX9iNajpwGYZwNyMvSFORWsMowd/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_raw_annotation.py",
+      "downloaded_sha256": "4f3b3c53aff2afa324b4c8d901b8c6d59d816bf7669ce551aea6156e0eebc3cb",
+      "published_sha256": "4f3b3c53aff2afa324b4c8d901b8c6d59d816bf7669ce551aea6156e0eebc3cb",
+      "published_bytes": 4841,
+      "source_url": "https://drive.google.com/file/d/1p5w5vvAktGuoEnEPOJ0ymD8PJyWn5qna/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_support_guard.py",
+      "downloaded_sha256": "55dc29785cc8e710c9912b34c884d6d96fdab189775fc3b8a81593a8877788f8",
+      "published_sha256": "55dc29785cc8e710c9912b34c884d6d96fdab189775fc3b8a81593a8877788f8",
+      "published_bytes": 14242,
+      "source_url": "https://drive.google.com/file/d/1dKs0T5oJiXAzjG0jDMB38ox-WBDsT-cf/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_support_guard_v2.py",
+      "downloaded_sha256": "342d4d29a89f436bd1cfc53e66467d15e0977f5e8fd0e435783c8bec543ff30c",
+      "published_sha256": "342d4d29a89f436bd1cfc53e66467d15e0977f5e8fd0e435783c8bec543ff30c",
+      "published_bytes": 12809,
+      "source_url": "https://drive.google.com/file/d/1P4bSepKbJ4sMIEztD38oSgry3ztj6jqb/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_tfidf_logistic.py",
+      "downloaded_sha256": "bfb46e6808cde351056ea7988ac305f46b5652dafeb96526238c65ca36735a46",
+      "published_sha256": "bfb46e6808cde351056ea7988ac305f46b5652dafeb96526238c65ca36735a46",
+      "published_bytes": 31321,
+      "source_url": "https://drive.google.com/file/d/1FqHiuZIf_goEoPCsFGKK5jtPsYOn5xtx/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/goal055_tree_budget.py",
+      "downloaded_sha256": "ec1c78d49be76bcf7a154671fba0430fbafc78dbe559075169c62af1b1503f74",
+      "published_sha256": "ec1c78d49be76bcf7a154671fba0430fbafc78dbe559075169c62af1b1503f74",
+      "published_bytes": 31320,
+      "source_url": "https://drive.google.com/file/d/1lveJCPEp29FH9ZeVlmOTUtcef-ne5Ni4/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/lab_metrics.py",
+      "downloaded_sha256": "62227020658fd526db102fa4a2f0f83928a51c1b7d089009e9451b2b9c03ce77",
+      "published_sha256": "62227020658fd526db102fa4a2f0f83928a51c1b7d089009e9451b2b9c03ce77",
+      "published_bytes": 7437,
+      "source_url": "https://drive.google.com/file/d/14GYLCkA4qbaYv-BNxNGlCVSkHpbAU7pc/view",
+      "transformation": "exact_bytes"
+    },
+    {
+      "path": "best05204/source/mcmp_repr.py",
+      "downloaded_sha256": "0673f10734aff57d6b356ee21661a45a9301b037e712a4a7f2d6d26fcff0b30b",
+      "published_sha256": "0673f10734aff57d6b356ee21661a45a9301b037e712a4a7f2d6d26fcff0b30b",
+      "published_bytes": 8270,
+      "source_url": "https://drive.google.com/file/d/1YgPFBtablrfQXPdo4a3xzaKxUL0bzPV6/view",
+      "transformation": "exact_bytes"
+    }
+  ]
+}

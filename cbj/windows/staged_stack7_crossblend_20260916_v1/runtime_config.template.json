@@ -1,0 +1,32 @@
+{
+  "schema_version": "STACK7_CROSSBLEND_RUNTIME_CONFIG_V1",
+  "parents": {
+    "linear": {
+      "source_root": "<frozen linear parent root>",
+      "runtime_config_path": "<frozen linear runtime config>",
+      "expected_source_sha256": "e8b2ebb3d4a9db89e41594fbd7abbbb222de4a304f6e7a3342bd589be74d1626",
+      "expected_runtime_config_sha256": "628f3fbcc38716ff8ae521ca399de978a236369a7a12ebe1a758d01f22c664d1"
+    },
+    "nonlinear": {
+      "source_root": "<frozen CatBoost parent root>",
+      "runtime_config_path": "<frozen CatBoost runtime config>",
+      "expected_source_sha256": "ecd4637bdeccb33b65b07721203954b1cbdfcfcc287ed59f4dd904bdfef2b69f",
+      "expected_runtime_config_sha256": "b6875a9dbe9b72328632b9a462cabc8bbe5624373d59c1cd1458f2691b60e993"
+    }
+  },
+  "linear_inner_npz": "<linear INNER_EXPORT.npz>",
+  "linear_inner_receipt_json": "<linear INNER_EXPORT.json>",
+  "nonlinear_inner_npz": "<nonlinear INNER_EXPORT.npz>",
+  "nonlinear_inner_receipt_json": "<nonlinear INNER_EXPORT.json>",
+  "cross_search_run_root": "<crossblend search run root>",
+  "cross_deployment_run_root": "<crossblend deployment run root>",
+  "canonical_full_npz": "<verified Stack7 training bank NPZ>",
+  "canonical_full_npz_sha256": "<sha256>",
+  "sample_submission_csv": "<sample submission CSV>",
+  "sample_submission_sha256": "<sha256>",
+  "source_manifest_json": "<SOURCE_MANIFEST.json>",
+  "source_manifest_sha256": "<sha256>",
+  "own_source_sha256": "<source closure sha256>",
+  "automatic_parent_fit": false,
+  "automatic_website_submission": false
+}

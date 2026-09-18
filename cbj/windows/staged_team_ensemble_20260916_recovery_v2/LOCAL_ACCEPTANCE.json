@@ -1,0 +1,15 @@
+{
+  "external_data_used": false,
+  "local_tests_discovered": 80,
+  "local_tests_passed": 73,
+  "real_fit_calls": 0,
+  "schema_version": "TEAM_LOCAL_ACCEPTANCE_V1",
+  "server_score_used": false,
+  "source_composite_sha256": "6192a97496fbb7bb17fe52c259d1f9574a01c6884c9649e1a52fa73904fa9c43",
+  "source_files": 73,
+  "status": "PASS",
+  "submission": false,
+  "test_read": false,
+  "transfer_files": 80,
+  "windows_only_tests_skipped": 7
+}

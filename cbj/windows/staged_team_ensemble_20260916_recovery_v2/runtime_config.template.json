@@ -1,0 +1,17 @@
+{
+  "schema_version": "TEAM_ENSEMBLE_RUNTIME_CONFIG_V1",
+  "entrypoint": "workflow:run_workflow",
+  "run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260915_v1/runs/team_ensemble_v1",
+  "cuda_device": "cuda:0",
+  "cpu_threads": 4,
+  "outer_folds": [0, 1, 2, 3, 4],
+  "max_promotion_rounds": 3,
+  "promotion_threshold": 0.55,
+  "minimum_disagreement": 0.03,
+  "maximum_retained": 8,
+  "target_macro_f1": 0.60,
+  "test_read": false,
+  "server_score_used": false,
+  "submission": false,
+  "automatic_next_bundle": false
+}

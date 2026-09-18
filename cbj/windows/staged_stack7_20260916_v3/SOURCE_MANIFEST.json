@@ -1,0 +1,14 @@
+{
+  "schema_version": "CBJ_STACK7_SOURCE_MANIFEST_V3",
+  "source_sha256": "c2aef86f39912319515381d61a74d4c9d09c53a2c8821b05b4871b8069dcd206",
+  "files": [
+    {"path":"BANK_MANIFEST.json","sha256":"ecf40e0b379537e4562fa9bbc875b590b356d4275fa3ffd335081bf64318b77f"},
+    {"path":"README.md","sha256":"06f922f327a2c8353b3c15f7258f770a52435e44bde23793211f7dd73ce6b9ae"},
+    {"path":"SOURCE_ALLOWLIST.txt","sha256":"dd14c71ab52d41dabc8dc1db2c2826ce6d5667fed14d81329ba54a91476a870b"},
+    {"path":"cli.py","sha256":"b50fd7b12db2429319bc571fa90c4ca60684fdea6271ac858ec214fae59d69bb"},
+    {"path":"runtime_config.template.json","sha256":"cced84348dcb1daa4069010f7fba0c4d0897e37ca702d762a1fa00f8b9e3b1a7"},
+    {"path":"training_bank.py","sha256":"1ea12ac064893b556cc6cddce78eee883dcb66b52b3c6001934e3d36621d07bd"},
+    {"path":"tests/__init__.py","sha256":"01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"},
+    {"path":"tests/test_training_bank.py","sha256":"434b422c6763f1f8c49cf4b696982f7140ae6221bd4bd282eba22a46b6880113"}
+  ]
+}

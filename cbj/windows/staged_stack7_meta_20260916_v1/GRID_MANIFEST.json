@@ -1,0 +1,321 @@
+{
+  "schema_version": "STACK7_META_GRID_V1",
+  "declarations": [
+    {
+      "representation": "probability",
+      "C": 0.001,
+      "weighting": "none"
+    },
+    {
+      "representation": "probability",
+      "C": 0.001,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "probability",
+      "C": 0.001,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "probability",
+      "C": 0.01,
+      "weighting": "none"
+    },
+    {
+      "representation": "probability",
+      "C": 0.01,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "probability",
+      "C": 0.01,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "probability",
+      "C": 0.1,
+      "weighting": "none"
+    },
+    {
+      "representation": "probability",
+      "C": 0.1,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "probability",
+      "C": 0.1,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "probability",
+      "C": 1,
+      "weighting": "none"
+    },
+    {
+      "representation": "probability",
+      "C": 1,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "probability",
+      "C": 1,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "probability",
+      "C": 10,
+      "weighting": "none"
+    },
+    {
+      "representation": "probability",
+      "C": 10,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "probability",
+      "C": 10,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "probability",
+      "C": 100,
+      "weighting": "none"
+    },
+    {
+      "representation": "probability",
+      "C": 100,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "probability",
+      "C": 100,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.001,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.001,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.001,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.01,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.01,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.01,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.1,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.1,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability",
+      "C": 0.1,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability",
+      "C": 1,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability",
+      "C": 1,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability",
+      "C": 1,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability",
+      "C": 10,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability",
+      "C": 10,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability",
+      "C": 10,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability",
+      "C": 100,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability",
+      "C": 100,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability",
+      "C": 100,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.001,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.001,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.001,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.01,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.01,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.01,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.1,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.1,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 0.1,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 1,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 1,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 1,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 10,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 10,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 10,
+      "weighting": "balanced"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 100,
+      "weighting": "none"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 100,
+      "weighting": "sqrt_inverse"
+    },
+    {
+      "representation": "log_probability_confidence",
+      "C": 100,
+      "weighting": "balanced"
+    }
+  ],
+  "axes": {
+    "representations": [
+      "probability",
+      "log_probability",
+      "log_probability_confidence"
+    ],
+    "C": [
+      0.001,
+      0.01,
+      0.1,
+      1,
+      10,
+      100
+    ],
+    "weightings": [
+      "none",
+      "sqrt_inverse",
+      "balanced"
+    ],
+    "inner_folds": [
+      0,
+      1,
+      2
+    ],
+    "alphas": [
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "poolings": [
+      "arithmetic",
+      "geometric"
+    ]
+  },
+  "counts": {
+    "heads": 54,
+    "inner_fits": 162,
+    "mixtures": 540,
+    "controls": 1,
+    "score_rows": 541
+  },
+  "ordering": "declarations_then_alpha_then_pooling_with_baseline_control_first",
+  "alpha_one_geometric_is_alias": true
+}
+

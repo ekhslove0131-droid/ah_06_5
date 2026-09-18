@@ -1,0 +1,32 @@
+{
+  "schema_version": "TASK6_BASE_BANK_ACCEPTANCE_V1",
+  "status": "PASS",
+  "scope": "three-class synthetic miniature bank; no real-data model fit",
+  "source_hashes": {
+    "base_bank.py": "84649caa12c0ca46e252f362dee8a26d5fe72438cf5043d3e5ba9b26cad71955",
+    "cache_store.py": "bf4e1a8fc7c76a34ee15acd8321f98b81574856c5ea0bba49f278dbd87b65faf",
+    "base_receipts.py": "cfd92abcfa4d49d56a783697712b8184b0b38b052ebd3e14592e33a8ee2a979b"
+  },
+  "test_hashes": {
+    "tests/test_base_bank.py": "4724b1ac8d3e5bf0b8daa4925ffa36f4f81e881b36fac713ade91a6b3ec5da4d",
+    "tests/test_cache_store.py": "eb2a17569222c8d5f9590311225c624fe4bb809397ddf6e0c8ef3383df0ba3b6"
+  },
+  "tests": {
+    "count": 6,
+    "result": "PASS",
+    "exact_oof_coverage": true,
+    "crash_before_ledger_adoption": true,
+    "second_run_fit_calls": 0,
+    "tamper_rejected": true,
+    "positive_weight_refit_only": true
+  },
+  "cache_key_lineage": [
+    "input", "parser", "source", "declaration", "fit_ids", "fit_y_when_supervised",
+    "fit_groups", "partition", "feature_order", "parameters"
+  ],
+  "execution": {
+    "candidate_registration_before_dispatch": true,
+    "sequential": true,
+    "test_read": false
+  }
+}

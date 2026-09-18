@@ -1,0 +1,20 @@
+{
+  "schema_version": "TEAM_V4_TRANSFER_PLAN_V1",
+  "status": "APPROVED",
+  "user_approval": "개인 V4 소스·설정·합성 GPU 테스트를 winpc:/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260915_v1로 전송하여 Windows GPU 구현과 테스트를 진행하는 것을 승인합니다. 실제 대규모 학습 시작도 승인 범위에 포함합니다.",
+  "destination": "winpc:/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260915_v1",
+  "transport": "rsync over approved SSH, direct destination, no intermediate home staging",
+  "delete_remote_files": false,
+  "source_composite_sha256": "6192a97496fbb7bb17fe52c259d1f9574a01c6884c9649e1a52fa73904fa9c43",
+  "runtime_config_sha256": "17cf18435d529930113b24046ab62181635d29a554769ebe45f8529f2984eb7f",
+  "remote_existing_training_inputs": {
+    "train_csv": "/mnt/e/GPU-Workspace/cbj-gene-subtype/inputs/train.csv",
+    "train_sha256": "92418b8441d058cfc68e939dd88725610750be4bc8edc51253cffc72fc4fc0ab",
+    "reference_oof": "/mnt/e/GPU-Workspace/cbj-gene-subtype/runs/windows_20260913_repeat_v1/seed_43/mrmr_global_oof.npz",
+    "reference_oof_sha256": "ab952812c5b779bbaee826bc9163579268cffbf50dd567fb2162c5600bec08e9"
+  },
+  "transferred_real_data": false,
+  "transferred_test_or_submission_data": false,
+  "large_training_authorized": true,
+  "automatic_observation_after_start": false
+}

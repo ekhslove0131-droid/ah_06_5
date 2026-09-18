@@ -1,0 +1,23 @@
+{
+  "schema_version": "CBJ_COMBO_RUNTIME_CONFIG_V1",
+  "v2_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260916_recovery_v2",
+  "v2_run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_team_ensemble_20260916_recovery_v2/runs/graded_recovery_v2",
+  "combo_evidence_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v2/runs/evidence_v2",
+  "combo_search_run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v3/runs/search_recovered_v3",
+  "combo_deployment_run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v3/runs/deployment_v3",
+  "evidence_npz": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v2/runs/evidence_v2/EVIDENCE.npz",
+  "evidence_receipt_json": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v2/runs/evidence_v2/EVIDENCE.json",
+  "stage_selection_joblib": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v2/runs/evidence_v2/stage_selection.joblib",
+  "grid_manifest_json": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v3/GRID_MANIFEST.json",
+  "evidence_sha256": "461c5930b0dd094f13c9659eb720676b624efac9ccceddf4f067f59659dd914f",
+  "grid_manifest_sha256": "SET_AT_SOURCE_FREEZE",
+  "meta_source_sha256": "SET_AT_SOURCE_FREEZE",
+  "automatic_website_submission": false,
+  "completed_replay": {
+    "source_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v2",
+    "run_root": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v2/runs/search_v2",
+    "config_path": "/mnt/e/GPU-Workspace/cbj-gene-subtype/staged_combo_search_20260916_v2/runs/evidence_v2/runtime_config.search.json",
+    "source_sha256": "be8cd02233b14174c32b64c4bc090f46d0c4c1fda1cbfd686c9f02f9e0f3edd5",
+    "config_sha256": "92ac573b184ce8570f6091bee032d3c892f9b0f99888122ffcf5a5b2e1012845"
+  }
+}

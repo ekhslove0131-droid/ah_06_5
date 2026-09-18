@@ -1,0 +1,15 @@
+{
+  "schema_version": "TASK3B_OLD_FAMILY_ACCEPTANCE_V1",
+  "status": "PASS",
+  "families": ["G1", "G2", "G3", "G4", "G5", "G6"],
+  "declared_configurations": 80,
+  "task_tests": 8,
+  "cumulative_tests": 23,
+  "model_fit_calls": 0,
+  "sha256": {
+    "old_candidates.py": "47c21c0b516413cba9a486dc361c460f8cb96906d2b2da15ff21a9ebd0646ecb",
+    "neural_candidates.py": "3963132ef96c21e434a6cb95a50dfab6fb4ba06214fb5cff93d4aa5fcf5b6cdc",
+    "tests/test_old_candidates.py": "c3bde7370d8400e3666e9ec3fb9d5c98222653ff83988e96a320e972185932df",
+    "tests/test_neural_candidates.py": "01c2434fe845b5bf7b726bcfcee0ea353dbacfda8f8d40ad7d05e1b230c44bbf"
+  }
+}

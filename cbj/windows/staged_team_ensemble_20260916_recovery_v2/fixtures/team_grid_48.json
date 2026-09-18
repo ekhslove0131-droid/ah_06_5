@@ -1,0 +1,1604 @@
+{
+  "version": "team-grid060-design-v1",
+  "status": "DESIGN_ONLY_NOT_LAUNCHED",
+  "training_authorized": false,
+  "upload_authorized_in_this_turn": false,
+  "automatic_goal_resume": false,
+  "target": {
+    "metric": "pooled_outer_OOF_26class_macro_F1",
+    "value": 0.6,
+    "guaranteed": false,
+    "independent_cohort": false
+  },
+  "inherit_base_grid": "../grid_search_design_20260914_v1/search_space.json: families+common only; replace fusion/validation/budget with this protocol",
+  "old_base_count": 80,
+  "new_base_count": 48,
+  "total_base_count": 128,
+  "common": {
+    "train_rows": 6201,
+    "class_count": 26,
+    "canonical_groups": 5636,
+    "split_manifest_status": "NOT_GENERATED; must seal before approved run",
+    "model_seed": 42,
+    "test_allowed": false,
+    "server_feedback_allowed": false,
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "outer_seed": 20260914,
+    "inner_seed_formula": "2026091400+outer_index",
+    "class_order": "central frozen encoder; no inferred lexical reorder",
+    "tree_numeric41": "same definitions/log1p/train StandardScaler/sqrt41 as prior grid",
+    "linear": "L2 lbfgs C1 max_iter3000 tol1e-5",
+    "XGB": "n_estimators200 depth3 lr0.1 hist objective multi:softprob; subsample1 colsample_bytree1; reg_lambda1 reg_alpha0 min_child_weight1; explicit missing NaN; device approved before seal",
+    "ExtraTrees": "500 entropy max_features sqrt min_leaf from family; bootstrapfalse; no estimator class_weight if sqrt weights externally supplied",
+    "LightGBM": "multiclass n_estimators300 lr0.05 num_leaves15 min_child_samples30 reg_lambda5 subsample1 colsample_bytree1; fixed rounds, no outer early stop",
+    "sample_weight": "sqrt(N_train/n_class) normalized mean1 unless family override",
+    "all_other_effective_parameters": "must be pinned in admission config and environment before launch; this JSON is not an executable runner"
+  },
+  "families": [
+    {
+      "id": "T1",
+      "name": "애영 원본 표현 분해",
+      "slot": "aeyoung",
+      "grid": {
+        "storage": [
+          "csr_implicit_missing",
+          "dense_explicit_zero"
+        ],
+        "burden": [
+          "none",
+          "raw_mutated_gene_count"
+        ],
+        "class_weight": [
+          "none",
+          "sqrt_inverse"
+        ]
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      }
+    },
+    {
+      "id": "T2",
+      "name": "이경 해시 ExtraTrees",
+      "slot": "kim_joint",
+      "grid": {
+        "view": [
+          "presence_burden",
+          "presence_exact_hash_burden"
+        ],
+        "min_samples_leaf": [
+          2,
+          5
+        ],
+        "max_features": [
+          "sqrt",
+          0.1
+        ]
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      }
+    },
+    {
+      "id": "T3",
+      "name": "이경 표현 × 우리 선택기",
+      "slot": "kim_joint",
+      "grid": {
+        "encoding": [
+          "legacy_ordinal_annotation",
+          "categorical_gene_type_binary"
+        ],
+        "gene_selector": [
+          "chi2_top500",
+          "mrmr_top500"
+        ],
+        "model": [
+          "XGB200_depth3_lr0.1",
+          "ExtraTrees500_entropy_leaf2"
+        ]
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      }
+    },
+    {
+      "id": "T4",
+      "name": "교차 표현 압축",
+      "slot": "kim_joint",
+      "grid": {
+        "input": [
+          "our_B0_B1_support3_TFIDF",
+          "kim_ordinal_chi2top500"
+        ],
+        "compressor": [
+          "SVD64",
+          "AE64"
+        ],
+        "head": [
+          "logreg_C1",
+          "LightGBM_fixed"
+        ]
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      }
+    },
+    {
+      "id": "T5",
+      "name": "canonical group 중복 가중치",
+      "slot": "kim_joint",
+      "grid": {
+        "view": [
+          "our_B0_B1_support3_TFIDF_numeric41",
+          "kim_presence_hash_burden"
+        ],
+        "group_weight": [
+          "row_uniform",
+          "inverse_train_group_size"
+        ],
+        "model": [
+          "logreg_C1",
+          "ExtraTrees500_entropy_leaf5"
+        ]
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      }
+    },
+    {
+      "id": "T6",
+      "name": "애영 단순 입력 × 우리 missing/global",
+      "slot": "aeyoung",
+      "grid": {
+        "view": [
+          "gene_binary",
+          "gene_type_binary"
+        ],
+        "per_gene_missing_flag": [
+          false,
+          true
+        ],
+        "model": [
+          "XGB200_depth3_lr0.1",
+          "ExtraTrees500_entropy_leaf5"
+        ]
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      }
+    }
+  ],
+  "ensemble": {
+    "slots": [
+      "H1_anchor",
+      "C10_uncorrected",
+      "best_old_grid_base",
+      "best_kim_joint_base",
+      "best_aeyoung_base"
+    ],
+    "candidate_selection": "inside each outer train, select each non-anchor slot by max(pooled inner standalone F1, pooled inner 50:50 arithmetic blend with H1 F1); exact ties choose trial ID ascending",
+    "weight_step": 0.25,
+    "weight_vectors": [
+      [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0.25,
+        0.75
+      ],
+      [
+        0,
+        0,
+        0,
+        0.5,
+        0.5
+      ],
+      [
+        0,
+        0,
+        0,
+        0.75,
+        0.25
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0.25,
+        0,
+        0.75
+      ],
+      [
+        0,
+        0,
+        0.25,
+        0.25,
+        0.5
+      ],
+      [
+        0,
+        0,
+        0.25,
+        0.5,
+        0.25
+      ],
+      [
+        0,
+        0,
+        0.25,
+        0.75,
+        0
+      ],
+      [
+        0,
+        0,
+        0.5,
+        0,
+        0.5
+      ],
+      [
+        0,
+        0,
+        0.5,
+        0.25,
+        0.25
+      ],
+      [
+        0,
+        0,
+        0.5,
+        0.5,
+        0
+      ],
+      [
+        0,
+        0,
+        0.75,
+        0,
+        0.25
+      ],
+      [
+        0,
+        0,
+        0.75,
+        0.25,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0.25,
+        0,
+        0,
+        0.75
+      ],
+      [
+        0,
+        0.25,
+        0,
+        0.25,
+        0.5
+      ],
+      [
+        0,
+        0.25,
+        0,
+        0.5,
+        0.25
+      ],
+      [
+        0,
+        0.25,
+        0,
+        0.75,
+        0
+      ],
+      [
+        0,
+        0.25,
+        0.25,
+        0,
+        0.5
+      ],
+      [
+        0,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      [
+        0,
+        0.25,
+        0.25,
+        0.5,
+        0
+      ],
+      [
+        0,
+        0.25,
+        0.5,
+        0,
+        0.25
+      ],
+      [
+        0,
+        0.25,
+        0.5,
+        0.25,
+        0
+      ],
+      [
+        0,
+        0.25,
+        0.75,
+        0,
+        0
+      ],
+      [
+        0,
+        0.5,
+        0,
+        0,
+        0.5
+      ],
+      [
+        0,
+        0.5,
+        0,
+        0.25,
+        0.25
+      ],
+      [
+        0,
+        0.5,
+        0,
+        0.5,
+        0
+      ],
+      [
+        0,
+        0.5,
+        0.25,
+        0,
+        0.25
+      ],
+      [
+        0,
+        0.5,
+        0.25,
+        0.25,
+        0
+      ],
+      [
+        0,
+        0.5,
+        0.5,
+        0,
+        0
+      ],
+      [
+        0,
+        0.75,
+        0,
+        0,
+        0.25
+      ],
+      [
+        0,
+        0.75,
+        0,
+        0.25,
+        0
+      ],
+      [
+        0,
+        0.75,
+        0.25,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0.25,
+        0,
+        0,
+        0,
+        0.75
+      ],
+      [
+        0.25,
+        0,
+        0,
+        0.25,
+        0.5
+      ],
+      [
+        0.25,
+        0,
+        0,
+        0.5,
+        0.25
+      ],
+      [
+        0.25,
+        0,
+        0,
+        0.75,
+        0
+      ],
+      [
+        0.25,
+        0,
+        0.25,
+        0,
+        0.5
+      ],
+      [
+        0.25,
+        0,
+        0.25,
+        0.25,
+        0.25
+      ],
+      [
+        0.25,
+        0,
+        0.25,
+        0.5,
+        0
+      ],
+      [
+        0.25,
+        0,
+        0.5,
+        0,
+        0.25
+      ],
+      [
+        0.25,
+        0,
+        0.5,
+        0.25,
+        0
+      ],
+      [
+        0.25,
+        0,
+        0.75,
+        0,
+        0
+      ],
+      [
+        0.25,
+        0.25,
+        0,
+        0,
+        0.5
+      ],
+      [
+        0.25,
+        0.25,
+        0,
+        0.25,
+        0.25
+      ],
+      [
+        0.25,
+        0.25,
+        0,
+        0.5,
+        0
+      ],
+      [
+        0.25,
+        0.25,
+        0.25,
+        0,
+        0.25
+      ],
+      [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0
+      ],
+      [
+        0.25,
+        0.25,
+        0.5,
+        0,
+        0
+      ],
+      [
+        0.25,
+        0.5,
+        0,
+        0,
+        0.25
+      ],
+      [
+        0.25,
+        0.5,
+        0,
+        0.25,
+        0
+      ],
+      [
+        0.25,
+        0.5,
+        0.25,
+        0,
+        0
+      ],
+      [
+        0.25,
+        0.75,
+        0,
+        0,
+        0
+      ],
+      [
+        0.5,
+        0,
+        0,
+        0,
+        0.5
+      ],
+      [
+        0.5,
+        0,
+        0,
+        0.25,
+        0.25
+      ],
+      [
+        0.5,
+        0,
+        0,
+        0.5,
+        0
+      ],
+      [
+        0.5,
+        0,
+        0.25,
+        0,
+        0.25
+      ],
+      [
+        0.5,
+        0,
+        0.25,
+        0.25,
+        0
+      ],
+      [
+        0.5,
+        0,
+        0.5,
+        0,
+        0
+      ],
+      [
+        0.5,
+        0.25,
+        0,
+        0,
+        0.25
+      ],
+      [
+        0.5,
+        0.25,
+        0,
+        0.25,
+        0
+      ],
+      [
+        0.5,
+        0.25,
+        0.25,
+        0,
+        0
+      ],
+      [
+        0.5,
+        0.5,
+        0,
+        0,
+        0
+      ],
+      [
+        0.75,
+        0,
+        0,
+        0,
+        0.25
+      ],
+      [
+        0.75,
+        0,
+        0,
+        0.25,
+        0
+      ],
+      [
+        0.75,
+        0,
+        0.25,
+        0,
+        0
+      ],
+      [
+        0.75,
+        0.25,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "weight_vector_count": 70,
+    "pooling": [
+      "arithmetic",
+      "normalized_geometric_logclip1e-12"
+    ],
+    "nominal_pool_configs": 140,
+    "guard": "all configurations use same fixed input-only H1 support guard; no fitted per-class gate",
+    "final_selection": "highest pooled inner F1; ties within1e-12 fewer nonzero slots, arithmetic before geometric, lexicographic weights; then refit positive-weight slots plus mandatory H1/C10 baseline on outertrain",
+    "learned_meta_in_core": false,
+    "baseline": "frozen best algorithm refit within outertrain; bias fit on C10 innerOOF only; no old fixed models reused across incompatible heldout groups"
+  },
+  "budget": {
+    "inner_pipeline_fits": 1950,
+    "outer_pipeline_fits_max": 25,
+    "total_pipeline_fits_max": 1975,
+    "secondary_fixed_seed_repeat_total_max": 3950,
+    "excludes": [
+      "failed attempts",
+      "pilots",
+      "separate learned-meta extension",
+      "preprocessing fits; AE is additional fit",
+      "26 binary fits per G3 OVR pipeline"
+    ],
+    "wall_time": "NOT_MEASURED",
+    "resource_limit_proposal": {
+      "cpu_threads": 4,
+      "gpu_concurrency": 1,
+      "ram_GiB": 12,
+      "vram_GiB": 6
+    }
+  },
+  "team_trials": [
+    {
+      "id": "T1_01",
+      "family": "T1",
+      "slot": "aeyoung",
+      "parameters": {
+        "storage": "csr_implicit_missing",
+        "burden": "none",
+        "class_weight": "none"
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T1_02",
+      "family": "T1",
+      "slot": "aeyoung",
+      "parameters": {
+        "storage": "csr_implicit_missing",
+        "burden": "none",
+        "class_weight": "sqrt_inverse"
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T1_03",
+      "family": "T1",
+      "slot": "aeyoung",
+      "parameters": {
+        "storage": "csr_implicit_missing",
+        "burden": "raw_mutated_gene_count",
+        "class_weight": "none"
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T1_04",
+      "family": "T1",
+      "slot": "aeyoung",
+      "parameters": {
+        "storage": "csr_implicit_missing",
+        "burden": "raw_mutated_gene_count",
+        "class_weight": "sqrt_inverse"
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T1_05",
+      "family": "T1",
+      "slot": "aeyoung",
+      "parameters": {
+        "storage": "dense_explicit_zero",
+        "burden": "none",
+        "class_weight": "none"
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T1_06",
+      "family": "T1",
+      "slot": "aeyoung",
+      "parameters": {
+        "storage": "dense_explicit_zero",
+        "burden": "none",
+        "class_weight": "sqrt_inverse"
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T1_07",
+      "family": "T1",
+      "slot": "aeyoung",
+      "parameters": {
+        "storage": "dense_explicit_zero",
+        "burden": "raw_mutated_gene_count",
+        "class_weight": "none"
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T1_08",
+      "family": "T1",
+      "slot": "aeyoung",
+      "parameters": {
+        "storage": "dense_explicit_zero",
+        "burden": "raw_mutated_gene_count",
+        "class_weight": "sqrt_inverse"
+      },
+      "fixed": {
+        "model": "XGB200_depth3_lr0.1",
+        "binary": "notna & ne('WT'); missing merged with WT",
+        "feature_selection": "none"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T2_01",
+      "family": "T2",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "presence_burden",
+        "min_samples_leaf": 2,
+        "max_features": "sqrt"
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T2_02",
+      "family": "T2",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "presence_burden",
+        "min_samples_leaf": 2,
+        "max_features": 0.1
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T2_03",
+      "family": "T2",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "presence_burden",
+        "min_samples_leaf": 5,
+        "max_features": "sqrt"
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T2_04",
+      "family": "T2",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "presence_burden",
+        "min_samples_leaf": 5,
+        "max_features": 0.1
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T2_05",
+      "family": "T2",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "presence_exact_hash_burden",
+        "min_samples_leaf": 2,
+        "max_features": "sqrt"
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T2_06",
+      "family": "T2",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "presence_exact_hash_burden",
+        "min_samples_leaf": 2,
+        "max_features": 0.1
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T2_07",
+      "family": "T2",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "presence_exact_hash_burden",
+        "min_samples_leaf": 5,
+        "max_features": "sqrt"
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T2_08",
+      "family": "T2",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "presence_exact_hash_burden",
+        "min_samples_leaf": 5,
+        "max_features": 0.1
+      },
+      "fixed": {
+        "model": "ExtraTrees500_entropy",
+        "class_weight": "balanced",
+        "hash_dim": 32768,
+        "alternate_sign": false,
+        "exact_token": "gene=original_full_cell_string",
+        "burden": [
+          "count",
+          "log1p_count"
+        ]
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T3_01",
+      "family": "T3",
+      "slot": "kim_joint",
+      "parameters": {
+        "encoding": "legacy_ordinal_annotation",
+        "gene_selector": "chi2_top500",
+        "model": "XGB200_depth3_lr0.1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T3_02",
+      "family": "T3",
+      "slot": "kim_joint",
+      "parameters": {
+        "encoding": "legacy_ordinal_annotation",
+        "gene_selector": "chi2_top500",
+        "model": "ExtraTrees500_entropy_leaf2"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T3_03",
+      "family": "T3",
+      "slot": "kim_joint",
+      "parameters": {
+        "encoding": "legacy_ordinal_annotation",
+        "gene_selector": "mrmr_top500",
+        "model": "XGB200_depth3_lr0.1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T3_04",
+      "family": "T3",
+      "slot": "kim_joint",
+      "parameters": {
+        "encoding": "legacy_ordinal_annotation",
+        "gene_selector": "mrmr_top500",
+        "model": "ExtraTrees500_entropy_leaf2"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T3_05",
+      "family": "T3",
+      "slot": "kim_joint",
+      "parameters": {
+        "encoding": "categorical_gene_type_binary",
+        "gene_selector": "chi2_top500",
+        "model": "XGB200_depth3_lr0.1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T3_06",
+      "family": "T3",
+      "slot": "kim_joint",
+      "parameters": {
+        "encoding": "categorical_gene_type_binary",
+        "gene_selector": "chi2_top500",
+        "model": "ExtraTrees500_entropy_leaf2"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T3_07",
+      "family": "T3",
+      "slot": "kim_joint",
+      "parameters": {
+        "encoding": "categorical_gene_type_binary",
+        "gene_selector": "mrmr_top500",
+        "model": "XGB200_depth3_lr0.1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T3_08",
+      "family": "T3",
+      "slot": "kim_joint",
+      "parameters": {
+        "encoding": "categorical_gene_type_binary",
+        "gene_selector": "mrmr_top500",
+        "model": "ExtraTrees500_entropy_leaf2"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "driver_bonus": false,
+        "selection_input": "gene binary, train only",
+        "recurrent_hotspot": "legacy ordinal only, train raw-cell support>=3",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T4_01",
+      "family": "T4",
+      "slot": "kim_joint",
+      "parameters": {
+        "input": "our_B0_B1_support3_TFIDF",
+        "compressor": "SVD64",
+        "head": "logreg_C1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T4_02",
+      "family": "T4",
+      "slot": "kim_joint",
+      "parameters": {
+        "input": "our_B0_B1_support3_TFIDF",
+        "compressor": "SVD64",
+        "head": "LightGBM_fixed"
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T4_03",
+      "family": "T4",
+      "slot": "kim_joint",
+      "parameters": {
+        "input": "our_B0_B1_support3_TFIDF",
+        "compressor": "AE64",
+        "head": "logreg_C1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T4_04",
+      "family": "T4",
+      "slot": "kim_joint",
+      "parameters": {
+        "input": "our_B0_B1_support3_TFIDF",
+        "compressor": "AE64",
+        "head": "LightGBM_fixed"
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T4_05",
+      "family": "T4",
+      "slot": "kim_joint",
+      "parameters": {
+        "input": "kim_ordinal_chi2top500",
+        "compressor": "SVD64",
+        "head": "logreg_C1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T4_06",
+      "family": "T4",
+      "slot": "kim_joint",
+      "parameters": {
+        "input": "kim_ordinal_chi2top500",
+        "compressor": "SVD64",
+        "head": "LightGBM_fixed"
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T4_07",
+      "family": "T4",
+      "slot": "kim_joint",
+      "parameters": {
+        "input": "kim_ordinal_chi2top500",
+        "compressor": "AE64",
+        "head": "logreg_C1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T4_08",
+      "family": "T4",
+      "slot": "kim_joint",
+      "parameters": {
+        "input": "kim_ordinal_chi2top500",
+        "compressor": "AE64",
+        "head": "LightGBM_fixed"
+      },
+      "fixed": {
+        "numeric": "our_numeric41 appended after latent",
+        "driver_bonus": false,
+        "AE": "new adaptation; hidden256,64,256; ReLU; linear reconstruction; 80 fixed epochs; Adam lr0.001; batch128; weight_decay0.0001; no early stop",
+        "SVD": "randomized,n_iter7",
+        "latent_scale": "train StandardScaler /sqrt64",
+        "AE_input": "train StandardScaler; sparse TFIDF requires memory gate before densification",
+        "class_weight": "sqrt_inverse"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T5_01",
+      "family": "T5",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "our_B0_B1_support3_TFIDF_numeric41",
+        "group_weight": "row_uniform",
+        "model": "logreg_C1"
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T5_02",
+      "family": "T5",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "our_B0_B1_support3_TFIDF_numeric41",
+        "group_weight": "row_uniform",
+        "model": "ExtraTrees500_entropy_leaf5"
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T5_03",
+      "family": "T5",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "our_B0_B1_support3_TFIDF_numeric41",
+        "group_weight": "inverse_train_group_size",
+        "model": "logreg_C1"
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T5_04",
+      "family": "T5",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "our_B0_B1_support3_TFIDF_numeric41",
+        "group_weight": "inverse_train_group_size",
+        "model": "ExtraTrees500_entropy_leaf5"
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T5_05",
+      "family": "T5",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "kim_presence_hash_burden",
+        "group_weight": "row_uniform",
+        "model": "logreg_C1"
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T5_06",
+      "family": "T5",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "kim_presence_hash_burden",
+        "group_weight": "row_uniform",
+        "model": "ExtraTrees500_entropy_leaf5"
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T5_07",
+      "family": "T5",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "kim_presence_hash_burden",
+        "group_weight": "inverse_train_group_size",
+        "model": "logreg_C1"
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T5_08",
+      "family": "T5",
+      "slot": "kim_joint",
+      "parameters": {
+        "view": "kim_presence_hash_burden",
+        "group_weight": "inverse_train_group_size",
+        "model": "ExtraTrees500_entropy_leaf5"
+      },
+      "fixed": {
+        "class_weight": "sqrt_inverse from unweighted train class counts; multiply group weight then normalize mean1",
+        "delete_or_relabel": false,
+        "hash_dim": 32768
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T6_01",
+      "family": "T6",
+      "slot": "aeyoung",
+      "parameters": {
+        "view": "gene_binary",
+        "per_gene_missing_flag": false,
+        "model": "XGB200_depth3_lr0.1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T6_02",
+      "family": "T6",
+      "slot": "aeyoung",
+      "parameters": {
+        "view": "gene_binary",
+        "per_gene_missing_flag": false,
+        "model": "ExtraTrees500_entropy_leaf5"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T6_03",
+      "family": "T6",
+      "slot": "aeyoung",
+      "parameters": {
+        "view": "gene_binary",
+        "per_gene_missing_flag": true,
+        "model": "XGB200_depth3_lr0.1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T6_04",
+      "family": "T6",
+      "slot": "aeyoung",
+      "parameters": {
+        "view": "gene_binary",
+        "per_gene_missing_flag": true,
+        "model": "ExtraTrees500_entropy_leaf5"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T6_05",
+      "family": "T6",
+      "slot": "aeyoung",
+      "parameters": {
+        "view": "gene_type_binary",
+        "per_gene_missing_flag": false,
+        "model": "XGB200_depth3_lr0.1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T6_06",
+      "family": "T6",
+      "slot": "aeyoung",
+      "parameters": {
+        "view": "gene_type_binary",
+        "per_gene_missing_flag": false,
+        "model": "ExtraTrees500_entropy_leaf5"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T6_07",
+      "family": "T6",
+      "slot": "aeyoung",
+      "parameters": {
+        "view": "gene_type_binary",
+        "per_gene_missing_flag": true,
+        "model": "XGB200_depth3_lr0.1"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    },
+    {
+      "id": "T6_08",
+      "family": "T6",
+      "slot": "aeyoung",
+      "parameters": {
+        "view": "gene_type_binary",
+        "per_gene_missing_flag": true,
+        "model": "ExtraTrees500_entropy_leaf5"
+      },
+      "fixed": {
+        "numeric": "our_numeric41",
+        "storage": "dense_explicit_zero",
+        "class_weight": "sqrt_inverse",
+        "parser": "frozen MCMP semantic parser; distinct from T1 literal binary"
+      },
+      "admission": "PENDING_SOURCE_AND_ADAPTER_AUDIT"
+    }
+  ]
+}

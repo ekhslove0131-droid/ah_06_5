@@ -1,0 +1,81 @@
+{
+  "version": "cbj-catboost-t4x2-v1",
+  "sources": {
+    "preflight_name": "preflight.json",
+    "preflight_sha256": "8d62dca092bd652acaa8c99421dfe5dcbd443e288c1f69eba72aae6285567b15",
+    "prepared_config": "anchor_config.json",
+    "fold_assignments": "fold_assignments.csv",
+    "reference_oof": "anchor_oof_probabilities.csv",
+    "sample_submission": "sample_submission.csv"
+  },
+  "files": {
+    "encoder": "fold_{fold}_encoder.json.gz",
+    "train_matrix": "fold_{fold}_train.npz",
+    "valid_matrix": "fold_{fold}_valid.npz",
+    "full_encoder": "full_encoder.json.gz",
+    "full_matrix": "all_train.npz",
+    "test_matrix": "unlabeled_test.npz",
+    "test_ids": "test_row_order.csv"
+  },
+  "features": {
+    "prefixes": [
+      "gene|",
+      "type|",
+      "gene_change|",
+      "aa|",
+      "aa_from|",
+      "aa_to|",
+      "global|",
+      "path|"
+    ],
+    "derived_counts": false
+  },
+  "runtime": {
+    "seed": 42,
+    "threads": 4,
+    "matrix_limit_mb": 2048,
+    "expected_gpu_count": 2,
+    "expected_gpu_name": "T4"
+  },
+  "validation": {
+    "rows": 8,
+    "backend_smoke": true,
+    "synthetic_rows": 48,
+    "synthetic_features": 8,
+    "synthetic_classes": 3,
+    "synthetic_rounds": 3
+  },
+  "selection": {
+    "internal_floor": null,
+    "max_fold_std": null,
+    "incumbent_macro_f1": null,
+    "minimum_improvement": 0.0,
+    "meaning": "Single first GPU candidate. Report internal Macro-F1 and anchor distance; no anchor score gate. Submission CSV generation disabled for this evaluation run.",
+    "near_tie_band": 0.005
+  },
+  "submission": {
+    "columns": [
+      "ID",
+      "SUBCLASS"
+    ],
+    "filename": "cbj_{experiment}_submission.csv"
+  },
+  "experiments": [
+    {
+      "name": "catboost_t4x2_f0",
+      "family": "catboost",
+      "params": {
+        "loss_function": "MultiClass",
+        "iterations": 300,
+        "learning_rate": 0.05,
+        "depth": 5,
+        "l2_leaf_reg": 5.0,
+        "verbose": 50,
+        "allow_writing_files": false,
+        "task_type": "GPU",
+        "devices": "0:1",
+        "border_count": 128
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "status": "COLAB_T4_REPLAY_COMPLETE",
+  "notebook_id": "1gCuxmrfk-zVx4dG1Ojxm91uVkcxBJ2vr",
+  "notebook_url": "https://colab.research.google.com/drive/1gCuxmrfk-zVx4dG1Ojxm91uVkcxBJ2vr",
+  "drive_modified_time": "2026-09-13T22:38:08.858Z",
+  "drive_size_after_execution": 37484,
+  "runtime": "T4 GPU, Python 3; isolated Python 3.12.12 package lock",
+  "bundle_download_sha256_verified": true,
+  "oof": {
+    "rows": 6201,
+    "classes": 26,
+    "macro_f1": 0.5204059148667912,
+    "fold_macro_f1": [0.511335566000366, 0.5080771491206282, 0.5246417128513309, 0.5157285124114852, 0.5249052136269026],
+    "fold_mean": 0.5169376308021425,
+    "fold_sd": 0.0068438072626925694,
+    "max_abs_vs_frozen_oof": 1.1523306253646837e-8,
+    "argmax_equal": true
+  },
+  "overfit_diagnostic": {
+    "c10_train_macro_f1_mean": 0.9410283546894542,
+    "c10_outer_valid_macro_f1_mean": 0.4842276623765548,
+    "c10_mean_train_valid_gap": 0.45680069231289944,
+    "final_ensemble_train_valid_gap": "NOT_MEASURED"
+  },
+  "submission": {
+    "rows": 2546,
+    "columns": ["ID", "SUBCLASS"],
+    "id_order_matches_sample": true,
+    "missing_values": 0,
+    "csv_sha256": "84694efbf9beedbfc34f9d40c7c395278321714b97d2805de8ca4d1371aeff14",
+    "matches_local_reference_csv": true
+  },
+  "new_classifier_fits": 0,
+  "test_labels_read": false,
+  "server_feedback_used": false,
+  "competition_site_submission_performed": false
+}

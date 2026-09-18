@@ -1,0 +1,22 @@
+{
+  "seeds": [
+    19,
+    193,
+    2029
+  ],
+  "mean_base": 0.44015053247176145,
+  "mean_router": 0.4670925448380845,
+  "mean_stacker": 0.5024378313436232,
+  "mean_delta_vs_base": 0.06228729887186176,
+  "mean_delta_vs_router": 0.0353452865055387,
+  "improved_folds_vs_base": 15,
+  "improved_folds_vs_router": 14,
+  "all_screen_gates_passed": true,
+  "total_training_seconds": 1579.7475033750234,
+  "test_access": false,
+  "public_lb": null,
+  "best_replaced": false,
+  "group_aware_validation": "NOT_RUN",
+  "source_sha256": "cddf60f0a0c39c42f23055cf744e11f90c09ddcbddf4afce4808b859f813098d",
+  "router_sha256": "3cc1ef87aa3478ed02061544d6dee8f0bdcf450d65fff2aa1f0f3364cdd179ce"
+}

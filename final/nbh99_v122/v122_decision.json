@@ -1,0 +1,37 @@
+{
+  "candidate_id": "v122_multires_complement_final",
+  "parent": "v97_sealed_gene_router_ensemble",
+  "parent_oof_macro_f1": 0.6034121303132921,
+  "validation_type": "train-only structural leave-one-profile-side-out",
+  "metrics": {
+    "variant": {
+      "accepted_classes": 4,
+      "pair_groups": 443,
+      "structural_rows": 886,
+      "structural_accuracy": 1.0,
+      "min_mapping_purity": 1.0,
+      "min_mapping_support": 173,
+      "test_matches": 220,
+      "test_changes": 1
+    },
+    "gene_set": {
+      "accepted_classes": 4,
+      "pair_groups": 431,
+      "structural_rows": 858,
+      "structural_accuracy": 1.0,
+      "min_mapping_purity": 1.0,
+      "min_mapping_support": 173,
+      "test_matches": 219,
+      "test_changes": 1
+    }
+  },
+  "resolution_disagreements": 0,
+  "test_changes_vs_v97": 1,
+  "changed_ids": [
+    "TEST_1293"
+  ],
+  "promotion_passed": true,
+  "submission_created": true,
+  "submission_path": "final/nbh99_v122/submission_v122_final_lb_0.4922388606.csv",
+  "submission_sha256": "4733e9daa2f7ea5da108229009f3d654cd25a362936e8944924746cac9a3734c"
+}

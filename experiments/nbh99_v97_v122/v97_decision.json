@@ -1,0 +1,43 @@
+{
+  "candidate_id": "v97_sealed_gene_router_ensemble",
+  "source_split_results": [
+    {
+      "fold_seed": 0,
+      "oof_macro_f1": 0.6040565864921957,
+      "delta": 0.007042444251164071,
+      "positive_folds": 5,
+      "worst_fold_delta": 0.0047717496031910445,
+      "worst_class_delta": 0.0
+    },
+    {
+      "fold_seed": 9617,
+      "oof_macro_f1": 0.6029593577100467,
+      "delta": 0.005945215469015053,
+      "positive_folds": 5,
+      "worst_fold_delta": 0.0038070775807323987,
+      "worst_class_delta": -0.004715217143879125
+    },
+    {
+      "fold_seed": 9631,
+      "oof_macro_f1": 0.6023121610888833,
+      "delta": 0.005298018847851638,
+      "positive_folds": 5,
+      "worst_fold_delta": 0.0024858990124349,
+      "worst_class_delta": -0.011166617690273273
+    }
+  ],
+  "parent_oof_macro_f1": 0.5970141422410317,
+  "ensemble_oof_macro_f1": 0.6034121303132921,
+  "oof_delta": 0.006397988072260441,
+  "positive_canonical_folds": 5,
+  "worst_canonical_fold_delta": 0.004671042369612355,
+  "worst_class_delta": -0.004715217143879125,
+  "oof_label_differences": 115,
+  "test_label_differences": 29,
+  "test_change_rate": 0.011390416339355853,
+  "source_audit_passed": true,
+  "final_qa_passed": true,
+  "submission_created": true,
+  "submission_path": "final/nbh99_v122/submission_v97_parent.csv",
+  "submission_sha256": "e7e80f24f806084631eef66f3a11263a08f0ef25798acde0b77a0a8bf98401e8"
+}

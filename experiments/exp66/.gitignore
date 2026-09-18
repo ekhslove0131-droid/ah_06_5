@@ -1,0 +1,10 @@
+# Keep patient-level data and generated models private.
+/train.csv
+/test.csv
+/sample_submission.csv
+/exp_56_seed*_class_weight_*.csv
+/exp_66_nested_stacker_seed*/
+*.joblib
+*.npz
+*.zip
+__pycache__/
